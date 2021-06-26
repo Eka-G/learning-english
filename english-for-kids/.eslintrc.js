@@ -1,10 +1,9 @@
 module.exports = {
-  extends: ['react-app', 'react-app/jest', 'plugin:prettier/recommended'],
-  rules: {},
-  overrides: [
-    {
-      files: ['**/*.ts?(x)'],
-      rules: {},
-    },
-  ],
+  extends: ['airbnb-typescript', 'react-app', 'react-app/jest', 'plugin:prettier/recommended'],
+  parserOptions: {
+    project: ['tsconfig.json'],
+  },
+  rules: {
+    'react/react-in-jsx-scope': [0],
+  },
 };
