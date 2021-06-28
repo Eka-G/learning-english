@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+:root {
+  --main-bg-color: #cfdafc;
+  --bg-color: #8eb2f5;
+  --main-font-color: #2c2b2c;
+  --main-elem-color: #e2a4df;
+}
+
+.body {
+  font-family: "Nanum Gothic", sans-serif;
+  background-color: var(--main-bg-color);
+}
