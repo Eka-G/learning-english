@@ -1,0 +1,29 @@
+.burger-menu {
+  position: relative;
+}
+
+.burger-menu,
+.burger-menu::after, 
+.burger-menu::before {
+  width: 40px;
+  height: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 7px 5px rgb(209 26 226 / 20%);
+  background-color: var(--main-elem-color);
+}
+
+.burger-menu::after,
+.burger-menu::before {
+  position: absolute;
+  display: block;
+  left: 0;
+  content: "";
+}
+
+.burger-menu::after {
+  top: -15px;
+}
+
+.burger-menu::before {
+  top: 15px;
+}

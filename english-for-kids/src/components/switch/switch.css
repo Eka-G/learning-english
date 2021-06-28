@@ -1,0 +1,29 @@
+.switch-label {
+  position: relative;
+  display: flex;
+  height: 32px;
+  width: 64px;
+  border-radius: 9999px;
+  background-color: var(--main-bg-color);
+  box-shadow: 0px 0px 7px 5px rgb(209 26 226 / 20%);
+}
+
+.switch-label__input {
+  display: none;
+}
+
+.switch-label__circle {
+  position: absolute;
+  left: 0px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--main-elem-color);
+  transition: left .4s ease;
+}
+
+.switch-label__input:checked + .switch-label__circle {
+  left: 35px;
+  border: 2px solid var(--main-elem-color);
+  background-color: var(--bg-color);
+}
