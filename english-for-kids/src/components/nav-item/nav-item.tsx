@@ -1,15 +1,15 @@
-import type { NavItemProps } from '../../types';
 import './nav-item.css';
+
+export interface NavItemProps {
+  value: string;
+  active?: boolean;
+}
 
 const NavItem = (props: NavItemProps) => {
   const { value, active } = props;
   const className = active ? 'nav-item nav-item--active' : 'nav-item';
 
-  return (
-    <li key={String(value)} className={className}>
-      {value}
-    </li>
-  );
+  return <li className={className}>{value}</li>;
 };
 
 export default NavItem;
