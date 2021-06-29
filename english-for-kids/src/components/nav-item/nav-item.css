@@ -1,0 +1,31 @@
+.nav-item {
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+  transition: transform .3s ease;
+}
+
+.nav-item--active::before {
+  position: absolute;
+  display: block;
+  content: '';
+  top: 5px;
+  left: -10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--main-elem-color);
+  box-shadow: 0px 0px 7px 5px rgb(209 26 226 / 20%);
+  pointer-events: none;
+}
+
+.nav-item:hover {
+  color: var(--active-color);
+  transform: translateX(7px);
+}
+
+.nav-item--active:hover {
+  color: var(--main-font-color);
+  transform: none;
+  cursor: default;
+}

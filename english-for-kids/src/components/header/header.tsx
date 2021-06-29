@@ -6,11 +6,11 @@ import './header.css';
 function Header() {
   const navItems = ['Main', 'Category1', 'Category2', 'Category3', 'Category4'];
   return (
-    <div className="header">
+    <header className="header">
       <Burger />
       <Switch />
-      <Navigation items={navItems} />
-    </div>
+      <Navigation items={navItems} active="Main" />
+    </header>
   );
 }
 
