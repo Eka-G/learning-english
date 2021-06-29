@@ -1,6 +1,6 @@
 import './switch.css';
 
-function Switch() {
+function Switcher() {
   return (
     <label htmlFor="toggle-game" className="switch-label">
       <input id="toggle-game" type="checkbox" className="switch-label__input" />
@@ -9,4 +9,4 @@ function Switch() {
   );
 }
 
-export default Switch;
+export default Switcher;

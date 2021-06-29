@@ -1,22 +1,14 @@
+import { NAV_ITEMS } from '../../constants';
 import NavItem from '../nav-item';
 
-interface NavProps {
-  items: string[];
-  active: string;
-}
-
-const NavList = (props: NavProps) => {
-  const { items, active } = props;
-  const ifActive = true;
-  const listItems = items.map((item: string) => {
-    return item === active ? (
-      <NavItem key={item} value={item} active={ifActive} />
-    ) : (
-      <NavItem key={item} value={item} />
-    );
-  });
-
-  return <ul className="nav-list">{listItems}</ul>;
+const NavList = () => {
+  return (
+    <ul className="nav-list">
+      {Object.entries(NAV_ITEMS).map((item) => (
+        <NavItem key={item[0]} value={item[0]} path={item[1]} />
+      ))}
+    </ul>
+  );
 };
 
 export default NavList;
