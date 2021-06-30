@@ -1,4 +1,21 @@
-export const NAV_ITEMS = {
+interface NavItemsInterface {
+  [index: string]: string;
+}
+
+interface CardInformation {
+  [index: string]: string;
+}
+
+interface CardsInerface {
+  'Action (set A)': CardInformation[];
+  'Action (set B)': CardInformation[];
+  'Animal (set A)': CardInformation[];
+  'Animal (set B)': CardInformation[];
+  Clothes: CardInformation[];
+  Emotions: CardInformation[];
+}
+
+export const NAV_ITEMS: NavItemsInterface = {
   Main: '/',
   'Action (set A)': '/action-a',
   'Action (set B)': '/action-b',
@@ -8,7 +25,7 @@ export const NAV_ITEMS = {
   Emotions: '/emotions',
 };
 
-export const CARDS = {
+export const CARDS: CardsInerface = {
   'Action (set A)': [
     {
       word: 'cry',

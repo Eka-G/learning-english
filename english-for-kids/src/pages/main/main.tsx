@@ -1,20 +1,19 @@
+import { NAV_ITEMS, CARDS } from '../../constants';
 import CardsField from '../../components/cards-field/cards-field';
 import Card from '../../components/card/card';
 
 const MainPage = () => {
-  const cardsNum = 8;
+  const cardsCategories = Object.entries(CARDS).map((category) => (
+    <Card
+      title={category[0]}
+      quantity={category[1].length}
+      img={category[1][1].image}
+      path={NAV_ITEMS[category[0]] || '/'}
+    />
+  ));
   return (
     <div className="page-content">
-      <CardsField>
-        <Card title="Category1" quantity={cardsNum} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-        <Card title="Category1" quantity={8} img="img/bird.jpg" />
-      </CardsField>
+      <CardsField>{cardsCategories}</CardsField>
     </div>
   );
 };
