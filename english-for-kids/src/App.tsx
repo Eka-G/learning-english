@@ -1,5 +1,6 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import Header from './components/header';
+import MainPage from './pages/main';
 
 const App = () => {
   return (
@@ -10,12 +11,7 @@ const App = () => {
           {Object.values(['/', '/category1', '/category2'])
             .reverse() // dont work when '/' is first
             .map((path) => {
-              const title = `Text for ${path}`;
-              return (
-                <Route key={path} path={path}>
-                  <p>{title}</p>
-                </Route>
-              );
+              return <MainPage />;
             })}
         </Switch>
       </div>

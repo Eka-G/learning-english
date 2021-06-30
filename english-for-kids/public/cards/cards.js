@@ -8,8 +8,8 @@ export const NAV_ITEMS = {
   Emotions: '/emotions',
 };
 
-export const CARDS = {
-  'Action (set A)': [
+export const CARDS = [
+  [
     {
       word: 'cry',
       translation: 'плакать',
@@ -59,7 +59,7 @@ export const CARDS = {
       audioSrc: 'audio/jump.mp3',
     },
   ],
-  'Action (set B)': [
+  [
     {
       word: 'open',
       translation: 'открывать',
@@ -109,7 +109,7 @@ export const CARDS = {
       audioSrc: 'audio/swim.mp3',
     },
   ],
-  'Animal (set A)': [
+  [
     {
       word: 'cat',
       translation: 'кот',
@@ -159,7 +159,7 @@ export const CARDS = {
       audioSrc: 'audio/sheep.mp3',
     },
   ],
-  'Animal (set B)': [
+  [
     {
       word: 'bird',
       translation: 'птица',
@@ -209,7 +209,7 @@ export const CARDS = {
       audioSrc: 'audio/dolphin.mp3',
     },
   ],
-  Clothes: [
+  [
     {
       word: 'skirt',
       translation: 'юбка',
@@ -259,7 +259,7 @@ export const CARDS = {
       audioSrc: 'audio/shoe.mp3',
     },
   ],
-  Emotions: [
+  [
     {
       word: 'sad',
       translation: 'грустный',
@@ -309,4 +309,4 @@ export const CARDS = {
       audioSrc: 'audio/laugh.mp3',
     },
   ],
-};
+];
