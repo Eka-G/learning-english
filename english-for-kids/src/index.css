@@ -1,3 +1,5 @@
+@import '../src/pages/pages.css';
+
 *,
 *::before,
 *::after {
@@ -19,6 +21,7 @@ a {
   --main-bg-color: #cfdafc;
   --bg-color: #8eb2f5;
   --main-font-color: #ffe1ff;
+  --font-color: #5780df;
   --main-elem-color: #e2a4df;
   --active-color: #00ffff;
   --unactive-color: #94bfbf;
@@ -35,10 +38,4 @@ a {
   margin: 0 auto;
   width: 1200px;
   height: 80vh;
-}
-
-.page-content {
-  margin-top: 50px;
-  width: 100%;
-  height: 100%;
 }

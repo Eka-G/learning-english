@@ -2,11 +2,14 @@ interface CategoriesInterface {
   [index: string]: string;
 }
 
-interface CardInformation {
-  [index: string]: string;
+export interface CardInformation {
+  word: string;
+  translation: string;
+  image: string;
+  audioSrc: string;
 }
 
-interface CardsInerface {
+export interface CardsInerface {
   'Action (set A)': CardInformation[];
   'Action (set B)': CardInformation[];
   'Animal (set A)': CardInformation[];
