@@ -1,4 +1,4 @@
-interface NavItemsInterface {
+interface CategoriesInterface {
   [index: string]: string;
 }
 
@@ -15,7 +15,7 @@ interface CardsInerface {
   Emotions: CardInformation[];
 }
 
-export const NAV_ITEMS: NavItemsInterface = {
+export const CATEGORIES: CategoriesInterface = {
   Main: '/',
   'Action (set A)': '/action-a',
   'Action (set B)': '/action-b',

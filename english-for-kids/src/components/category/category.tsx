@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
-import './card.css';
+import './category.css';
 
-interface CardProps {
+interface CategoryProps {
   title: string;
   quantity: number;
   img: string;
   path: string;
 }
 
-const Card = ({ title, quantity, img, path }: CardProps) => {
+const Category = ({ title, quantity, img, path }: CategoryProps) => {
   const imgStyle = {
     backgroundImage: `url(./cards/${img})`,
   };
@@ -24,4 +24,4 @@ const Card = ({ title, quantity, img, path }: CardProps) => {
   );
 };
 
-export default Card;
+export default Category;
