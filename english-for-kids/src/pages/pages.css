@@ -9,7 +9,7 @@
 }
 
 .page__title {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 40px;
   color: var( --font-color);
   text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #FF2D95 0px 0px 20px, #FF2D95 0px 0px 30px;

@@ -1,4 +1,4 @@
-.card {
+.category {
   text-align: center;
   background-color: var(--main-elem-color);
   border-radius: 0% 30% 0% 30%;
@@ -7,7 +7,7 @@
   cursor: pointer;
 }
 
-.card__img {
+.category__img {
   width: 100%;
   height: 65%;
   background-repeat: no-repeat;
@@ -16,14 +16,14 @@
   border-radius: 0% 30% 0% 0%;
 }
 
-.card__info {
+.category__info {
   padding: 20px;
 }
 
-.card__title {
+.category__title {
   font-size: 26px;
 }
 
-.card__text {
+.category__text {
   font-size: 20px;
 }

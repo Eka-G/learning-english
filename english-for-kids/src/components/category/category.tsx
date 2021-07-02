@@ -14,11 +14,11 @@ const Category = ({ title, quantity, img, path }: CategoryProps) => {
   };
 
   return (
-    <Link className="card" to={path}>
-      <div className="card__img" style={imgStyle} />
-      <div className="card__info">
-        <h2 className="card__title">{title}</h2>
-        <p className="card__text">{`${quantity} cards`}</p>
+    <Link className="category" to={path}>
+      <div className="category__img" style={imgStyle} />
+      <div className="category__info">
+        <h2 className="category__title">{title}</h2>
+        <p className="category__text">{`${quantity} cards`}</p>
       </div>
     </Link>
   );
