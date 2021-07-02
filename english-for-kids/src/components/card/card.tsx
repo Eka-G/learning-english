@@ -15,12 +15,13 @@ const Card = ({ word, translation, image, audioSrc }: CardInformation) => {
   const onArrowClick = async () => {
     setActiveClass(!activeClass);
   };
-  const onMouseOut = () => {
+  const onMouseLeave = () => {
+    if (!activeClass) return;
     setActiveClass(!activeClass);
   };
 
   return (
-    <div role="none" className="card-container" onClick={onCardClick} onMouseOut={onMouseOut} onBlur={() => 0}>
+    <div role="none" className="card-container" onClick={onCardClick} onMouseLeave={onMouseLeave} onBlur={() => 0}>
       <div className={activeClass ? 'card card--active' : 'card'}>
         <div className="card__front">
           <div className="card__img" style={imgStyle} />
