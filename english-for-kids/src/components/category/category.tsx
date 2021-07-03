@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useStateContext } from '../../shared';
 import './category.css';
 
 interface CategoryProps {
@@ -9,12 +10,16 @@ interface CategoryProps {
 }
 
 const Category = ({ title, quantity, img, path }: CategoryProps) => {
+  const { state } = useStateContext();
   const imgStyle = {
     backgroundImage: `url(./cards/${img})`,
   };
+  const backgroundStyle = {
+    backgroundColor: state.mode === 'train' ? 'var(--main-elem-color)' : 'var(--bg-color)',
+  };
 
   return (
-    <Link className="category" to={path}>
+    <Link className="category" to={path} style={backgroundStyle}>
       <div className="category__img" style={imgStyle} />
       <div className="category__info">
         <h2 className="category__title">{title}</h2>

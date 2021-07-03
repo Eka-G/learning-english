@@ -2,13 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import StoreContainer from './components/store-container';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <StoreContainer>
+        <App />
+      </StoreContainer>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
