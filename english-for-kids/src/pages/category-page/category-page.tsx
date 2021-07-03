@@ -1,6 +1,8 @@
 import { CardInformation } from '../../constants';
 import CardsField from '../../components/cards-field/cards-field';
 import Card from '../../components/card';
+import { useStateContext } from '../../shared';
+import './category-page.css';
 
 interface CategoryPageInterface {
   title: string;
@@ -8,6 +10,7 @@ interface CategoryPageInterface {
 }
 
 const CategoryPage = ({ title, cards }: CategoryPageInterface) => {
+  const { state } = useStateContext();
   const cardsList = cards.map((card) => (
     <Card
       key={card.translation}
@@ -22,6 +25,11 @@ const CategoryPage = ({ title, cards }: CategoryPageInterface) => {
     <div className="page__content">
       <h1 className="page__title">{title}</h1>
       <CardsField>{cardsList}</CardsField>
+      {state.mode === 'game' && (
+        <button type="button" className="page__start-btn">
+          ✿ Start game ✿
+        </button>
+      )}
     </div>
   );
 };
