@@ -1,6 +1,7 @@
 import { Switch, Route } from 'react-router-dom';
 import { CARDS } from './constants';
 import Header from './components/header';
+import Footer from './components/footer';
 import MainPage from './pages/main';
 import CategoryPage from './pages/category-page';
 
@@ -39,6 +40,8 @@ const App = () => {
           </Route>
         </Switch>
       </div>
+
+      <Footer />
     </div>
   );
 };
