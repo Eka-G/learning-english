@@ -6,9 +6,11 @@ import './card.css';
 
 interface CardProps extends CardInformation {
   gameClick: () => void;
+  disabled: boolean;
+  isCorrect: boolean;
 }
 
-const Card = ({ word, translation, image, audioSrc, gameClick }: CardProps) => {
+const Card = ({ word, translation, image, audioSrc, gameClick, disabled, isCorrect }: CardProps) => {
   const { state } = useStateContext();
   const [activeClass, setActiveClass] = useState(false);
   const [play] = useSound(`./cards/${audioSrc}`);
@@ -27,7 +29,7 @@ const Card = ({ word, translation, image, audioSrc, gameClick }: CardProps) => {
   };
 
   return (
-    <div className="card-container">
+    <div className={`card-container ${disabled ? 'card-container--disable' : ''}`}>
       {state.mode === 'train' && (
         <div
           role="none"
@@ -62,6 +64,7 @@ const Card = ({ word, translation, image, audioSrc, gameClick }: CardProps) => {
       {state.mode === 'game' && state.isGame && (
         <div className="card">
           <div role="none" className="card__img" style={{ ...imgStyle, height: '100%' }} onClick={gameClick} />
+          <div className={isCorrect ? 'card__img-block' : ''} />
         </div>
       )}
     </div>

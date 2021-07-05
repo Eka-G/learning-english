@@ -1,18 +1,14 @@
-import { useState } from 'react';
+import { useReducer, useEffect, useRef } from 'react';
 import { useSound } from 'use-sound';
 import { CardInformation } from '../../constants';
 import { useStateContext } from '../../shared';
 import CardsField from '../cards-field/cards-field';
 import Card from '../card';
 import RatingScale from '../rating-scale';
+import gameReducer from './game-reduser';
 
 interface GameProps {
   cards: CardInformation[];
-}
-interface GameState {
-  sounds: string[];
-  correct: string[];
-  error: string[];
 }
 
 function sortSounds(arr: string[]) {
@@ -20,32 +16,57 @@ function sortSounds(arr: string[]) {
 }
 
 const Game = ({ cards }: GameProps) => {
+  const { state, dispatch } = useStateContext();
+  const timeOutId = useRef<number | undefined>();
+
   const sounds = [...cards].reduce((arr, info) => {
     arr.push(info.audioSrc);
     return arr;
   }, [] as string[]);
-  const [gameState, setGameState] = useState<GameState>({
-    sounds: sortSounds(sounds),
-    correct: [],
-    error: [],
-  });
-  const [play] = useSound(`./cards/${gameState.sounds[gameState.sounds.length - 1]}`);
-  const [playError] = useSound(`./cards/audio/error.mp3`);
-  const [playCorrect] = useSound(`./cards/audio/correct.mp3`);
 
-  const { state, dispatch } = useStateContext();
-  const checkAnswer = async (answer: string, curAnswer: string) => {
+  const [gameState, gameDispatch] = useReducer(gameReducer, {
+    sounds: sortSounds(sounds),
+    correctList: [],
+    errorList: [],
+    disabled: false,
+  });
+
+  const playOptions = {
+    onplay: () => {
+      gameDispatch({ type: 'on disabled' });
+    },
+    onend: () => {
+      gameDispatch({ type: 'off disabled' });
+    },
+  };
+
+  const [play] = useSound(`./cards/${gameState.sounds[gameState.sounds.length - 1]}`, playOptions);
+  const [playError] = useSound(`./cards/audio/error.mp3`, playOptions);
+  const [playCorrect] = useSound(`./cards/audio/correct.mp3`, playOptions);
+  useEffect(() => {
+    if (!state.isGame || state.mode !== 'game') {
+      return () => {
+        window.clearTimeout(timeOutId.current);
+      };
+    }
+
+    timeOutId.current = window.setTimeout(() => play({}), 500);
+
+    return () => {
+      window.clearTimeout(timeOutId.current);
+    };
+  }, [play, state.mode, state.isGame]);
+
+  const checkAnswer = (answer: string, curAnswer: string) => {
     if (answer !== curAnswer) {
       playError();
       return;
     }
 
     playCorrect();
-    setGameState((curGameState) => {
-      return { ...curGameState, sounds: gameState.sounds.slice(0, -1) };
-    });
-    play();
+    gameDispatch({ type: 'next sound' });
   };
+
   const cardsList = cards.map((card) => (
     <Card
       key={card.translation}
@@ -54,6 +75,8 @@ const Game = ({ cards }: GameProps) => {
       image={card.image}
       audioSrc={card.audioSrc}
       gameClick={() => checkAnswer(gameState.sounds[gameState.sounds.length - 1], card.audioSrc)}
+      disabled={gameState.disabled}
+      isCorrect={false}
     />
   ));
 
@@ -67,7 +90,6 @@ const Game = ({ cards }: GameProps) => {
           className="page__start-btn"
           onClick={() => {
             dispatch({ type: 'start game' });
-            setTimeout(() => play(), 500);
           }}
         >
           ✿ Start game ✿
