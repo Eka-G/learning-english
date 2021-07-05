@@ -1,6 +1,7 @@
 import { CardInformation } from '../../constants';
 import CardsField from '../../components/cards-field/cards-field';
 import Card from '../../components/card';
+import RatingScale from '../../components/rating-scale';
 import { useStateContext } from '../../shared';
 import './category-page.css';
 
@@ -10,7 +11,7 @@ interface CategoryPageInterface {
 }
 
 const CategoryPage = ({ title, cards }: CategoryPageInterface) => {
-  const { state } = useStateContext();
+  const { state, dispatch } = useStateContext();
   const cardsList = cards.map((card) => (
     <Card
       key={card.translation}
@@ -25,10 +26,20 @@ const CategoryPage = ({ title, cards }: CategoryPageInterface) => {
     <div className="page__content">
       <h1 className="page__title">{title}</h1>
       <CardsField>{cardsList}</CardsField>
-      {state.mode === 'game' && (
-        <button type="button" className="page__start-btn">
+
+      {state.mode === 'game' && state.isGame === false && (
+        <button type="button" className="page__start-btn" onClick={() => dispatch({ type: 'start game' })}>
           ✿ Start game ✿
         </button>
+      )}
+
+      {state.mode === 'game' && state.isGame === true && (
+        <>
+          <button type="button" className="page__replay-btn">
+            ♪ Repeat
+          </button>
+          <RatingScale />
+        </>
       )}
     </div>
   );
