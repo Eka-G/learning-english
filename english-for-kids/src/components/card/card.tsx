@@ -4,7 +4,11 @@ import { CardInformation } from '../../constants';
 import { useStateContext } from '../../shared';
 import './card.css';
 
-const Card = ({ word, translation, image, audioSrc }: CardInformation) => {
+interface CardProps extends CardInformation {
+  gameClick: () => void;
+}
+
+const Card = ({ word, translation, image, audioSrc, gameClick }: CardProps) => {
   const { state } = useStateContext();
   const [activeClass, setActiveClass] = useState(false);
   const [play] = useSound(`./cards/${audioSrc}`);
@@ -14,7 +18,7 @@ const Card = ({ word, translation, image, audioSrc }: CardInformation) => {
   const onCardClick = () => {
     play();
   };
-  const onArrowClick = async () => {
+  const onArrowClick = () => {
     setActiveClass(!activeClass);
   };
   const onMouseLeave = () => {
@@ -49,9 +53,15 @@ const Card = ({ word, translation, image, audioSrc }: CardInformation) => {
         </div>
       )}
 
-      {state.mode === 'game' && (
+      {state.mode === 'game' && !state.isGame && (
         <div className="card">
           <div className="card__img" style={{ ...imgStyle, height: '100%' }} />
+        </div>
+      )}
+
+      {state.mode === 'game' && state.isGame && (
+        <div className="card">
+          <div role="none" className="card__img" style={{ ...imgStyle, height: '100%' }} onClick={gameClick} />
         </div>
       )}
     </div>
