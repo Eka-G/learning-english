@@ -8,7 +8,9 @@ export interface Action {
 const gameReducer: Reducer<GameState, Action> = (state: GameState, action: Action) => {
   switch (action.type) {
     case 'next sound':
-      return { ...state, sounds: state.sounds.slice(0, -1), disabled: true };
+      return { ...state, sounds: state.sounds.slice(0, -1), correct: state.correct + 1, disabled: true };
+    case 'invalid card':
+      return { ...state, error: state.error + 1 };
     case 'on disabled':
       return { ...state, disabled: true };
     case 'off disabled':

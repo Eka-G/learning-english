@@ -26,8 +26,8 @@ const Game = ({ cards }: GameProps) => {
 
   const [gameState, gameDispatch] = useReducer(gameReducer, {
     sounds: sortSounds(sounds),
-    correctList: [],
-    errorList: [],
+    correct: 0,
+    error: 0,
     disabled: false,
   });
 
@@ -60,6 +60,7 @@ const Game = ({ cards }: GameProps) => {
   const checkAnswer = (answer: string, curAnswer: string) => {
     if (answer !== curAnswer) {
       playError();
+      gameDispatch({ type: 'invalid card' });
       return;
     }
 
@@ -101,7 +102,7 @@ const Game = ({ cards }: GameProps) => {
           <button type="button" className="page__replay-btn" onClick={() => play()}>
             ♪ Repeat
           </button>
-          <RatingScale />
+          <RatingScale correct={gameState.correct} error={gameState.error} />
         </>
       )}
     </>

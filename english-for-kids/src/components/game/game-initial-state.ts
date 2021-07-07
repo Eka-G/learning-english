@@ -1,14 +1,14 @@
 export interface GameState {
   sounds: string[];
-  correctList: string[];
-  errorList: string[];
+  correct: number;
+  error: number;
   disabled: boolean;
 }
 
 const InitialGameState: GameState = {
   sounds: [],
-  correctList: [],
-  errorList: [],
+  correct: 0,
+  error: 0,
   disabled: true,
 };
 
