@@ -1,10 +1,12 @@
-import { useReducer, useEffect, useRef } from 'react';
+import { useState, useReducer, useEffect, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSound } from 'use-sound';
 import { CardInformation } from '../../constants';
 import { useStateContext } from '../../shared';
 import CardsField from '../cards-field/cards-field';
 import Card from '../card';
 import RatingScale from '../rating-scale';
+import Modal from '../modal';
 import gameReducer from './game-reduser';
 
 interface GameProps {
@@ -16,6 +18,8 @@ function sortSounds(arr: string[]) {
 }
 
 const Game = ({ cards }: GameProps) => {
+  const history = useHistory();
+  const [correctAnswers, setCorrectAnswers] = useState<string[]>([]);
   const { state, dispatch } = useStateContext();
   const timeOutId = useRef<number | undefined>();
 
@@ -43,6 +47,9 @@ const Game = ({ cards }: GameProps) => {
   const [play] = useSound(`./cards/${gameState.sounds[gameState.sounds.length - 1]}`, playOptions);
   const [playError] = useSound(`./cards/audio/error.mp3`, playOptions);
   const [playCorrect] = useSound(`./cards/audio/correct.mp3`, playOptions);
+  const [playSuccess] = useSound(`./cards/audio/success.mp3`, playOptions);
+  const [playFail] = useSound(`./cards/audio/failure.mp3`, playOptions);
+
   useEffect(() => {
     if (!state.isGame || state.mode !== 'game') {
       return () => {
@@ -51,11 +58,15 @@ const Game = ({ cards }: GameProps) => {
     }
 
     timeOutId.current = window.setTimeout(() => play({}), 500);
+    if (gameState.sounds.length === 0) {
+      gameState.error === 0 ? playSuccess() : playFail();
+      setTimeout(() => history.push('/'), 4000);
+    }
 
     return () => {
       window.clearTimeout(timeOutId.current);
     };
-  }, [play, state.mode, state.isGame]);
+  }, [play, state.mode, state.isGame, gameState.sounds.length, history, gameState.error, playSuccess, playFail]);
 
   const checkAnswer = (answer: string, curAnswer: string) => {
     if (answer !== curAnswer) {
@@ -65,6 +76,7 @@ const Game = ({ cards }: GameProps) => {
     }
 
     playCorrect();
+    setCorrectAnswers([...correctAnswers, curAnswer]);
     gameDispatch({ type: 'next sound' });
   };
 
@@ -77,34 +89,44 @@ const Game = ({ cards }: GameProps) => {
       audioSrc={card.audioSrc}
       gameClick={() => checkAnswer(gameState.sounds[gameState.sounds.length - 1], card.audioSrc)}
       disabled={gameState.disabled}
-      isCorrect={false}
+      isCorrect={correctAnswers.some((item) => item === card.audioSrc)}
     />
   ));
 
   return (
     <>
-      <CardsField>{cardsList}</CardsField>
-
-      {state.mode === 'game' && !state.isGame && (
-        <button
-          type="button"
-          className="page__start-btn"
-          onClick={() => {
-            dispatch({ type: 'start game' });
-          }}
-        >
-          ✿ Start game ✿
-        </button>
+      {state.mode === 'train' && (
+        <>
+          <CardsField>{cardsList}</CardsField>{' '}
+        </>
       )}
 
-      {state.mode === 'game' && state.isGame && (
+      {state.mode === 'game' && !state.isGame && (
         <>
+          <CardsField>{cardsList}</CardsField>
+          <button
+            type="button"
+            className="page__start-btn"
+            onClick={() => {
+              dispatch({ type: 'start game' });
+            }}
+          >
+            ✿ Start game ✿
+          </button>
+        </>
+      )}
+
+      {state.mode === 'game' && state.isGame && gameState.sounds.length !== 0 && (
+        <>
+          <CardsField>{cardsList}</CardsField>
           <button type="button" className="page__replay-btn" onClick={() => play()}>
             ♪ Repeat
           </button>
           <RatingScale correct={gameState.correct} error={gameState.error} />
         </>
       )}
+
+      {state.mode === 'game' && state.isGame && gameState.sounds.length === 0 && <Modal errors={gameState.error} />}
     </>
   );
 };

@@ -6,12 +6,6 @@
   perspective: 250px;
 }
 
-.card-container--disable .card__img-block {
-  cursor: default;
-  pointer-events: none;
-  border: 9px solid red;
-}
-
 .card__img-block {
   position: absolute;
   display: block;
@@ -20,6 +14,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(124, 163, 92, 0.473);
+  cursor: default;
 }
 
 .card {
