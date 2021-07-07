@@ -2,6 +2,7 @@
   "name": "english-for-kids",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://rolling-scopes-school.github.io/eka-g-JSFE2021Q1/english-for-kids",
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.0",
     "@types/react-router-dom": "^5.1.7",
