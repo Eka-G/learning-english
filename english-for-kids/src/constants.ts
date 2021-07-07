@@ -16,6 +16,8 @@ export interface CardsInerface {
   'Animal (set B)': CardInformation[];
   Clothes: CardInformation[];
   Emotions: CardInformation[];
+  Nature: CardInformation[];
+  Space: CardInformation[];
 }
 
 export const CATEGORIES: CategoriesInterface = {
@@ -26,6 +28,8 @@ export const CATEGORIES: CategoriesInterface = {
   'Animal (set B)': '/animal-b',
   Clothes: '/clothes',
   Emotions: '/emotions',
+  Nature: '/nature',
+  Space: '/space',
 };
 
 export const CARDS: CardsInerface = {
@@ -327,6 +331,106 @@ export const CARDS: CardsInerface = {
       translation: 'смех',
       image: 'img/laugh.jpg',
       audioSrc: 'audio/laugh.mp3',
+    },
+  ],
+  Nature: [
+    {
+      word: 'rock',
+      translation: 'камень',
+      image: 'img/rock.jpg',
+      audioSrc: 'audio/rock.mp3',
+    },
+    {
+      word: 'flower',
+      translation: 'цветок',
+      image: 'img/flower.jpg',
+      audioSrc: 'audio/flower.mp3',
+    },
+    {
+      word: 'mountain',
+      translation: 'гора',
+      image: 'img/mountain.jpg',
+      audioSrc: 'audio/mountain.mp3',
+    },
+    {
+      word: 'ocean',
+      translation: 'океан',
+      image: 'img/ocean.jpg',
+      audioSrc: 'audio/ocean.mp3',
+    },
+    {
+      word: 'rainbow',
+      translation: 'радуга',
+      image: 'img/rainbow.jpg',
+      audioSrc: 'audio/rainbow.mp3',
+    },
+    {
+      word: 'river',
+      translation: 'река',
+      image: 'img/river.jpg',
+      audioSrc: 'audio/river.mp3',
+    },
+    {
+      word: 'lake',
+      translation: 'озеро',
+      image: 'img/lake.jpg',
+      audioSrc: 'audio/lake.mp3',
+    },
+    {
+      word: 'forest',
+      translation: 'лес',
+      image: 'img/forest.jpg',
+      audioSrc: 'audio/forest.mp3',
+    },
+  ],
+  Space: [
+    {
+      word: 'comet',
+      translation: 'комета',
+      image: 'img/comet.jpg',
+      audioSrc: 'audio/comet.mp3',
+    },
+    {
+      word: 'Earth',
+      translation: 'Земля',
+      image: 'img/earth.jpg',
+      audioSrc: 'audio/earth.mp3',
+    },
+    {
+      word: 'astronaut',
+      translation: 'астронавт',
+      image: 'img/astronaut.jpg',
+      audioSrc: 'audio/astronaut.mp3',
+    },
+    {
+      word: 'moon',
+      translation: 'Луна',
+      image: 'img/moon.jpg',
+      audioSrc: 'audio/moon.mp3',
+    },
+    {
+      word: 'planet',
+      translation: 'планета',
+      image: 'img/planet.jpg',
+      audioSrc: 'audio/planet.mp3',
+    },
+    {
+      word: 'sun',
+      translation: 'солнце',
+      image: 'img/sun.jpg',
+      audioSrc: 'audio/sun.mp3',
+    },
+    {
+      word: 'rocket',
+      translation: 'ракета',
+      image: 'img/rocket.jpg',
+      audioSrc: 'audio/rocket.mp3',
+    },
+    {
+      word: 'star',
+      translation: 'звезда',
+      image: 'img/star.jpg',
+      audioSrc: 'audio/star.mp3',
     },
   ],
 };

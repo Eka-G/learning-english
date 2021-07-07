@@ -35,6 +35,14 @@ const App = () => {
             <CategoryPage key="Emotions" title="Emotions" cards={CARDS.Emotions} />
           </Route>
 
+          <Route path="/nature">
+            <CategoryPage key="Nature" title="Nature" cards={CARDS.Nature} />
+          </Route>
+
+          <Route path="/space">
+            <CategoryPage key="Space" title="Space" cards={CARDS.Space} />
+          </Route>
+
           <Route path="/">
             <MainPage />
           </Route>
