@@ -30,6 +30,7 @@ export const CATEGORIES: CategoriesInterface = {
   Emotions: '/emotions',
   Nature: '/nature',
   Space: '/space',
+  Statistics: '/statistics',
 };
 
 export const CARDS: CardsInerface = {

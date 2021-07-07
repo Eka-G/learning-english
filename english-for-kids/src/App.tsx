@@ -4,6 +4,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import MainPage from './pages/main';
 import CategoryPage from './pages/category-page';
+import StatisticsPage from './pages/statistics';
 
 const App = () => {
   return (
@@ -41,6 +42,10 @@ const App = () => {
 
           <Route path="/space">
             <CategoryPage key="Space" title="Space" cards={CARDS.Space} />
+          </Route>
+
+          <Route path="/statistics">
+            <StatisticsPage />
           </Route>
 
           <Route path="/">
