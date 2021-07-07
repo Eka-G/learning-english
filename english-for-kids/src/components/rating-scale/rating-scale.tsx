@@ -8,17 +8,8 @@ interface RatingProps {
 }
 
 const RatingScale = ({ correct, error }: RatingProps) => {
-  const stars = new Array(correct).fill(<Star imgPath="star.svg" />);
+  const stars = Array.from(Array(correct), (_, i) => <Star key={i} imgPath="star.svg" />);
   const emptyStars = new Array(error).fill(<Star imgPath="empty-star.svg" />);
-  // const [arrStars, setStar] = useState<JSX.Element[] | []>([]);
-  // const addStar = () => {
-  //   setStar((arr) => [...arr, <Star imgPath="star.svg" />]);
-  // };
-
-  // const [arrEmptyStars, setEmptyStar] = useState<JSX.Element[] | []>([]);
-  // const addEmptyStar = () => {
-  //   setEmptyStar((arr) => [...arr, <Star imgPath="empty-star.svg" />]);
-  // };
 
   return (
     <div className="rating">
