@@ -5,7 +5,7 @@ export interface GameState {
   disabled: boolean;
 }
 
-const InitialGameState: GameState = {
+export const InitialGameState: GameState = {
   sounds: [],
   correct: 0,
   error: 0,

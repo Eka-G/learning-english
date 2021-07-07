@@ -10,7 +10,9 @@ const reducer: Reducer<State, Action> = (state: State, action: Action) => {
     case 'toggle mode':
       return { ...state, mode: state.mode === 'train' ? 'game' : 'train' };
     case 'start game':
-      return { ...state, isGame: !state.isGame };
+      return { ...state, isGame: true };
+    case 'finish game':
+      return { ...state, isGame: false };
     default:
       throw new Error();
   }

@@ -8,6 +8,7 @@ import Card from '../card';
 import RatingScale from '../rating-scale';
 import Modal from '../modal';
 import gameReducer from './game-reduser';
+import { InitialGameState } from './game-initial-state';
 
 interface GameProps {
   cards: CardInformation[];
@@ -28,12 +29,7 @@ const Game = ({ cards }: GameProps) => {
     return arr;
   }, [] as string[]);
 
-  const [gameState, gameDispatch] = useReducer(gameReducer, {
-    sounds: sortSounds(sounds),
-    correct: 0,
-    error: 0,
-    disabled: false,
-  });
+  const [gameState, gameDispatch] = useReducer(gameReducer, { ...InitialGameState, sounds: sortSounds(sounds) });
 
   const playOptions = {
     onplay: () => {
@@ -52,6 +48,7 @@ const Game = ({ cards }: GameProps) => {
 
   useEffect(() => {
     if (!state.isGame || state.mode !== 'game') {
+      dispatch({ type: 'finish game' });
       return () => {
         window.clearTimeout(timeOutId.current);
       };
@@ -60,13 +57,26 @@ const Game = ({ cards }: GameProps) => {
     timeOutId.current = window.setTimeout(() => play({}), 500);
     if (gameState.sounds.length === 0) {
       gameState.error === 0 ? playSuccess() : playFail();
-      setTimeout(() => history.push('/'), 4000);
+      setTimeout(() => {
+        dispatch({ type: 'finish game' });
+        history.push('/');
+      }, 4000);
     }
 
     return () => {
       window.clearTimeout(timeOutId.current);
     };
-  }, [play, state.mode, state.isGame, gameState.sounds.length, history, gameState.error, playSuccess, playFail]);
+  }, [
+    play,
+    state.mode,
+    state.isGame,
+    gameState.sounds.length,
+    history,
+    gameState.error,
+    playSuccess,
+    playFail,
+    dispatch,
+  ]);
 
   const checkAnswer = (answer: string, curAnswer: string) => {
     if (answer !== curAnswer) {

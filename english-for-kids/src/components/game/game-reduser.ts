@@ -1,5 +1,5 @@
 import type { Reducer } from 'react';
-import type { GameState } from './game-initial-state';
+import type { GameState, InitialGameState } from './game-initial-state';
 
 export interface Action {
   type: string;
@@ -15,6 +15,8 @@ const gameReducer: Reducer<GameState, Action> = (state: GameState, action: Actio
       return { ...state, disabled: true };
     case 'off disabled':
       return { ...state, disabled: false };
+    case 'reset state':
+      return { ...state, InitialGameState };
     default:
       throw new Error();
   }
