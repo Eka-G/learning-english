@@ -22,3 +22,13 @@
 .footer__info {
   font-size: 12px;
 }
+
+@media (max-width: 576px) {
+  .footer {
+    font-size: 14px;
+  }
+
+  .footer__info {
+    display: none;
+  }
+}

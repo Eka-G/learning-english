@@ -4,6 +4,7 @@
   align-items: center;
   cursor: pointer;
   perspective: 250px;
+  height: 250px;
 }
 
 .card__img-block {
@@ -89,4 +90,23 @@
   background: no-repeat center url("../../assets/turn-arrow.svg");
   background-size: contain;
   cursor: help;
+}
+
+@media (max-width: 992px) {
+  .card-container {
+    height: 250px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card__title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 320px) {
+  .card-container {
+    width: 100%;
+    height: 250px;
+  }
 }
