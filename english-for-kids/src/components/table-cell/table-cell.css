@@ -6,3 +6,17 @@
   color: var(--main-font-color);
   background-color: var(--bg-color)
 }
+
+@media (max-width: 576px) {
+  .table__cell {
+    padding: 2px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .table__cell{
+    width: 250px;
+    font-size: 8px;
+  }
+}

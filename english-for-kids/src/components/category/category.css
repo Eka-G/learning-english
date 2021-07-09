@@ -36,13 +36,29 @@
 }
 
 @media (max-width: 576px) {
+  .category {
+    height: 120px;
+  }
+
   .category__title {
-    font-size: 24px;
+    font-size: 12px;
+  }
+
+  .category__info {
+    padding: 10px;
+  }
+
+  .category__text {
+    font-size: 12px;
   }
 }
 
 @media (max-width: 320px) {
   .category {
     width: 100%;
+  }
+
+  .category__info {
+    padding: 5px;
   }
 }

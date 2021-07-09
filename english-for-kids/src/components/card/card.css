@@ -98,15 +98,43 @@
   }
 }
 
+@media (max-width: 768px) {
+  .card-container {
+    height: 200px;
+  }
+}
+
 @media (max-width: 576px) {
+  .card-container {
+    height: 130px;
+  }
+
   .card__title {
-    font-size: 24px;
+    font-size: 18px;
+  }
+
+  .card__info {
+    padding: 10px;
+  }
+
+  .card__turn {
+    width: 20px;
+    height: 20px;
   }
 }
 
 @media (max-width: 320px) {
   .card-container {
     width: 100%;
-    height: 250px;
+    height: 100px;
+  }
+
+  .card__title {
+    font-size: 14px;
+  }
+
+  .card__turn {
+    width: 15px;
+    height: 15px;
   }
 }
