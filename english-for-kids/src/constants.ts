@@ -1,4 +1,4 @@
-interface CategoriesInterface {
+export interface CategoriesInterface {
   [index: string]: string;
 }
 
@@ -192,7 +192,7 @@ export const CARDS: CardsInerface = {
       audioSrc: 'audio/bird.mp3',
     },
     {
-      word: 'fish',
+      word: 'fish ',
       translation: 'рыба',
       image: 'img/fish1.jpg',
       audioSrc: 'audio/fish.mp3',

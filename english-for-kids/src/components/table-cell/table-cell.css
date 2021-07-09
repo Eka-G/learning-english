@@ -1,0 +1,8 @@
+.table__cell {
+  padding: 5px;
+}
+
+.table__cell-head {
+  color: var(--main-font-color);
+  background-color: var(--bg-color)
+}
