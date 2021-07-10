@@ -1,0 +1,38 @@
+.form__input {
+  margin-bottom: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form__input:valid {
+  border: 1px solid var(--valid-border-color);
+  background-color: var(--valid-color);
+}
+
+/* .form__input:invalid {
+  border: 1px solid var(--invalid-border-color);
+  background-color: var(--invalid-color);
+} */
+
+.form__btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__btn {
+  padding: 7px;
+  border: none;
+  border-radius: 5px;
+  color: var(--main-font-color);
+  cursor: pointer;
+}
+
+.form__cancel-btn {
+  background-color: var(--main-elem-color);
+}
+
+.form__login-btn {
+  background-color: var(--bg-color);
+}

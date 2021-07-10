@@ -1,10 +1,10 @@
 .nav {
-  position: absolute;
-  top: 0;
   padding-top: 120px;
   padding-right: 70px;
   padding-bottom: 50px;
   padding-left: 70px;
+  position: absolute;
+  top: 0;
   background-color: var(--bg-color);
   box-shadow: 11px 0px 5px -5px rgb(30 129 204 / 20%);
   transition: left .4s ease-out;
@@ -17,6 +17,22 @@
 
 .nav--unactive {
   left: -500px;
+}
+
+.nav__login-btn {
+  margin-bottom: 50px;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  color: var(--font-color);
+  background-color: var(--main-bg-color);
+  cursor: pointer;
+  transition: all .3s linear;
+}
+
+.nav__login-btn:hover {
+  box-shadow: 0px 0px 7px 5px rgb(209 26 226 / 20%);
 }
 
 @media (max-width: 576px) {

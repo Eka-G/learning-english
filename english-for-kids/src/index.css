@@ -34,6 +34,10 @@ a {
   --main-elem-color: #e2a4df;
   --active-color: #00ffff;
   --unactive-color: #94bfbf;
+  --valid-color: #b2ecba;
+  --valid-border-color: #3ca845;
+  --invalid-color: #dfb9a7;
+  --invalid-border-color: #ff5353;
 }
 
 .body {

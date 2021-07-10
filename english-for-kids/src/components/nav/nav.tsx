@@ -14,6 +14,9 @@ function Navigation(props: NavProps) {
 
   return (
     <nav className={`nav nav--${visible ? 'active' : 'unactive'}`} style={height}>
+      <button type="button" className="nav__login-btn">
+        Log in
+      </button>
       <NavList />
     </nav>
   );
