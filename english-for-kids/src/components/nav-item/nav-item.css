@@ -5,6 +5,10 @@
   transition: transform .3s ease;
 }
 
+.nav-item--active {
+  color: var(--active-color);
+}
+
 .nav-item--active::before {
   position: absolute;
   display: block;
@@ -25,7 +29,6 @@
 }
 
 .nav-item--active:hover {
-  color: var(--main-font-color);
   transform: none;
   cursor: default;
 }

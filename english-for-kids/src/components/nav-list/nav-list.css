@@ -1,0 +1,11 @@
+.admin-nav__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+}
+
+.admin-nav__list  > .nav-item {
+  margin-bottom: 0;
+}
