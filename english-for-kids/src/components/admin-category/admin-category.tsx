@@ -1,32 +1,38 @@
-import { Link } from 'react-router-dom';
-import { useStateContext } from '../../shared';
 import './admin-category.css';
 
-interface CategoryProps {
+interface AdminCategoryProps {
   title: string;
   quantity: number;
-  img: string;
-  path: string;
+  isNew: boolean;
 }
 
-const Category = ({ title, quantity, img, path }: CategoryProps) => {
-  const { state } = useStateContext();
-  const imgStyle = {
-    backgroundImage: `url(./cards/${img})`,
-  };
-  const backgroundStyle = {
-    backgroundColor: state.mode === 'train' ? 'var(--main-elem-color)' : 'var(--bg-color)',
-  };
-
+const AdminCategory = ({ title, quantity, isNew }: AdminCategoryProps) => {
   return (
-    <Link className="category" to={path} style={backgroundStyle}>
-      <div className="category__img" style={imgStyle} />
-      <div className="category__info">
-        <h2 className="category__title">{title}</h2>
-        <p className="category__text">{`${quantity} cards`}</p>
-      </div>
-    </Link>
+    <div className="admin-category">
+      <h2 className="admin-category__title">{title}</h2>
+      {!isNew && (
+        <>
+          <div className="admin-category__delete" />
+          <p className="admin-category__text">{`words: ${quantity}`}</p>
+
+          <div className="admin-category__btns">
+            <button type="button" className="admin-category__btn btn">
+              🛠 Update
+            </button>
+            <button type="button" className="admin-category__btn btn btn">
+              ✎ Add word
+            </button>
+          </div>
+        </>
+      )}
+
+      {isNew && (
+        <button type="button" className="admin-category__create-btn">
+          +
+        </button>
+      )}
+    </div>
   );
 };
 
-export default Category;
+export default AdminCategory;

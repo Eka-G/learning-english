@@ -87,6 +87,11 @@ a {
   .content {
     width: 320px;
   }
+
+  .btn {
+    padding: 5px;
+    font-size: 10px;
+  }
 }
 
 @media (max-width: 320px) {

@@ -13,7 +13,7 @@ const LoginModal = () => {
               <button type="button" className="form__cancel-btn btn">
                 ⌧ Close
               </button>
-              <button type="button" className="btn form__login-btn">
+              <button type="button" className="form__login-btn btn">
                 ✓ Login
               </button>
             </div>
