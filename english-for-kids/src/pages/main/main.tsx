@@ -19,7 +19,7 @@ const MainPage = () => {
         Please choose the category. TRAIN: in each of category you need to learn the words. GAME: test yourself(click
         the switcher at the top):
       </p>
-      <CardsField>{cardsCategories}</CardsField>
+      <CardsField isAdmin={false}>{cardsCategories}</CardsField>
     </div>
   );
 };

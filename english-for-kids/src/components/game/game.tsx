@@ -107,13 +107,13 @@ const Game = ({ cards }: GameProps) => {
     <>
       {state.mode === 'train' && (
         <>
-          <CardsField>{cardsList}</CardsField>{' '}
+          <CardsField isAdmin={false}>{cardsList}</CardsField>{' '}
         </>
       )}
 
       {state.mode === 'game' && !state.isGame && (
         <>
-          <CardsField>{cardsList}</CardsField>
+          <CardsField isAdmin={false}>{cardsList}</CardsField>
           <button
             type="button"
             className="page__start-btn"
@@ -128,7 +128,7 @@ const Game = ({ cards }: GameProps) => {
 
       {state.mode === 'game' && state.isGame && gameState.sounds.length !== 0 && (
         <>
-          <CardsField>{cardsList}</CardsField>
+          <CardsField isAdmin={false}>{cardsList}</CardsField>
           <button type="button" className="page__replay-btn" onClick={() => play()}>
             ♪ Repeat
           </button>
