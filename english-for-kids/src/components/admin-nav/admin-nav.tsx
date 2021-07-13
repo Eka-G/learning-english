@@ -3,7 +3,7 @@ import './admin-nav.css';
 
 const AdminNav = () => {
   return (
-    <nav className="nav admin-nav">
+    <nav className="admin-nav">
       <NavList isAdmin adminItems={['categories', 'words']} />
     </nav>
   );

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import GameContext from './game-context';
+import AppContext from './app-context';
 
 const useStateContext = () => {
-  return useContext(GameContext);
+  return useContext(AppContext);
 };
 
 export default useStateContext;

@@ -15,7 +15,7 @@ const Category = ({ title, quantity, img, path }: CategoryProps) => {
     backgroundImage: `url(./cards/${img})`,
   };
   const backgroundStyle = {
-    backgroundColor: state.mode === 'train' ? 'var(--main-elem-color)' : 'var(--bg-color)',
+    backgroundColor: state.gameMode === 'train' ? 'var(--main-elem-color)' : 'var(--bg-color)',
   };
 
   return (

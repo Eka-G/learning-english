@@ -30,7 +30,7 @@ const Card = ({ word, translation, image, audioSrc, gameClick, disabled, isCorre
 
   return (
     <div className={`card-container ${disabled ? 'card-container--disable' : ''}`}>
-      {state.mode === 'train' && (
+      {state.gameMode === 'train' && (
         <div
           role="none"
           className={activeClass ? 'card card--active' : 'card'}
@@ -55,13 +55,13 @@ const Card = ({ word, translation, image, audioSrc, gameClick, disabled, isCorre
         </div>
       )}
 
-      {state.mode === 'game' && !state.isGame && (
+      {state.gameMode === 'game' && !state.isGame && (
         <div className="card">
           <div className="card__img" style={{ ...imgStyle, height: '100%' }} />
         </div>
       )}
 
-      {state.mode === 'game' && state.isGame && (
+      {state.gameMode === 'game' && state.isGame && (
         <div className="card">
           <div role="none" className="card__img" style={{ ...imgStyle, height: '100%' }} onClick={gameClick} />
           <div className={isCorrect ? 'card__img-block' : ''} />

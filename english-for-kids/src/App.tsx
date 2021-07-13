@@ -1,15 +1,22 @@
 import { Switch, Route } from 'react-router-dom';
+import { useStateContext } from './shared';
 import { CARDS } from './constants';
 import Header from './components/header';
+import AdminHeader from './components/admin-header';
 import Footer from './components/footer';
 import MainPage from './pages/main';
 import CategoryPage from './pages/category-page';
 import StatisticsPage from './pages/statistics';
+import AdminCategoryPage from './pages/admin-category-page';
+import AdminWordsPage from './pages/admin-words-page';
 
 const App = () => {
+  const { state } = useStateContext();
+
   return (
     <div className="App">
-      <Header />
+      {!state.isLogin && <Header />}
+      {state.isLogin && <AdminHeader />}
       <div className="content">
         <Switch>
           <Route path="/action-a">
@@ -46,6 +53,14 @@ const App = () => {
 
           <Route path="/statistics">
             <StatisticsPage />
+          </Route>
+
+          <Route path="/categories">
+            <AdminCategoryPage />
+          </Route>
+
+          <Route path="/words">
+            <AdminWordsPage />
           </Route>
 
           <Route path="/">

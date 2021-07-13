@@ -47,7 +47,7 @@ const Game = ({ cards }: GameProps) => {
   const [playFail] = useSound(`./cards/audio/failure.mp3`, playOptions);
 
   useEffect(() => {
-    if (!state.isGame || state.mode !== 'game') {
+    if (!state.isGame || state.gameMode !== 'game') {
       dispatch({ type: 'finish game' });
       return () => {
         window.clearTimeout(timeOutId.current);
@@ -68,7 +68,7 @@ const Game = ({ cards }: GameProps) => {
     };
   }, [
     play,
-    state.mode,
+    state.gameMode,
     state.isGame,
     gameState.sounds.length,
     history,
@@ -105,13 +105,13 @@ const Game = ({ cards }: GameProps) => {
 
   return (
     <>
-      {state.mode === 'train' && (
+      {state.gameMode === 'train' && (
         <>
           <CardsField isAdmin={false}>{cardsList}</CardsField>{' '}
         </>
       )}
 
-      {state.mode === 'game' && !state.isGame && (
+      {state.gameMode === 'game' && !state.isGame && (
         <>
           <CardsField isAdmin={false}>{cardsList}</CardsField>
           <button
@@ -126,7 +126,7 @@ const Game = ({ cards }: GameProps) => {
         </>
       )}
 
-      {state.mode === 'game' && state.isGame && gameState.sounds.length !== 0 && (
+      {state.gameMode === 'game' && state.isGame && gameState.sounds.length !== 0 && (
         <>
           <CardsField isAdmin={false}>{cardsList}</CardsField>
           <button type="button" className="page__replay-btn" onClick={() => play()}>
@@ -136,7 +136,7 @@ const Game = ({ cards }: GameProps) => {
         </>
       )}
 
-      {state.mode === 'game' && state.isGame && gameState.sounds.length === 0 && <Modal errors={gameState.error} />}
+      {state.gameMode === 'game' && state.isGame && gameState.sounds.length === 0 && <Modal errors={gameState.error} />}
     </>
   );
 };

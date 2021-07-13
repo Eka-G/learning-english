@@ -1,10 +1,12 @@
 export interface State {
-  mode: 'train' | 'game';
+  isLogin: boolean;
+  gameMode: 'train' | 'game';
   isGame: boolean;
 }
 
 const InitialState: State = {
-  mode: 'train',
+  isLogin: false,
+  gameMode: 'train',
   isGame: false,
 };
 
