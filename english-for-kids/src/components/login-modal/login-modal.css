@@ -10,15 +10,15 @@
   outline: none;
 }
 
-.form__input:valid {
+.form__input--changed:valid {
   border: 1px solid var(--valid-border-color);
   background-color: var(--valid-color);
 }
 
-/* .form__input:invalid {
+.form__input--changed:invalid {
   border: 1px solid var(--invalid-border-color);
   background-color: var(--invalid-color);
-} */
+}
 
 .form__btns {
   display: flex;
@@ -31,4 +31,10 @@
 
 .form__login-btn {
   background-color: var(--bg-color);
+}
+
+.form__login-btn:disabled {
+  background-color: var(--unactive-color);
+  pointer-events: none;
+  cursor: not-allowed;
 }
