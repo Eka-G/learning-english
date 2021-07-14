@@ -11,5 +11,20 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  rules: {},
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
+  rules: {
+    'import/extensions': [
+      'error',
+      {
+        ts: 'never',
+      },
+    ],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+  },
 };

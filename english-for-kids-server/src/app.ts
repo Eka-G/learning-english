@@ -1,5 +1,18 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+import express from 'express';
+import mongoose from 'mongoose';
+import router from './routers';
+import config from './config';
 
-console.log('dvdvdv');
+const bootstrap = async () => {
+  const app = express();
+  const PORT = 3030;
+
+  app.use(express.json());
+  app.use(router);
+
+  await mongoose.connect(config.mongodbUri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+  app.listen(PORT, () => console.log(`app listening at http://localhost:${PORT}`));
+};
+
+bootstrap();
