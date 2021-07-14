@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import createCard from '../../controllers/create-cards';
-import getCards from '../../controllers/get-catds';
+import createCard from '../controllers/create-cards';
+import getCards from '../controllers/get-catds';
 
 const router = Router();
 
