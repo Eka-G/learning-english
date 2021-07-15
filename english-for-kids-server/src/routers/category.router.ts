@@ -36,7 +36,7 @@ router.put('/', async (req, res) => {
     const category = await updateCategory(body.prevName, body.newName);
     return res.status(201).json({ data: category });
   } catch (error) {
-    return res.status(500).json({ error: error.message });
+    return res.status(404).json({ error: error.message });
   }
 });
 
