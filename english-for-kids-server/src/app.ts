@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import router from './routers';
 import config from './config';
 
@@ -7,6 +8,7 @@ const bootstrap = async () => {
   const app = express();
   const PORT = 3030;
 
+  app.use(cors());
   app.use(express.json());
   app.use(router);
 
