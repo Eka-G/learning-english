@@ -2,6 +2,7 @@ import { Router } from 'express';
 import createCategory from '../controllers/create-category';
 import getCategories from '../controllers/get-categories';
 import updateCategory from '../controllers/update-category';
+import deleteCategory from '../controllers/delete-category';
 
 const router = Router();
 
@@ -34,6 +35,17 @@ router.put('/', async (req, res) => {
 
   try {
     const category = await updateCategory(body.prevName, body.newName);
+    return res.status(201).json({ data: category });
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
+  }
+});
+
+router.delete('/', async (req, res) => {
+  const { body } = req;
+
+  try {
+    const category = await deleteCategory(body.name);
     return res.status(201).json({ data: category });
   } catch (error) {
     return res.status(404).json({ error: error.message });
