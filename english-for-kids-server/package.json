@@ -2,12 +2,15 @@
   "name": "english-for-kids-server",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/app.ts",
+  "main": "./dist/index.js",
   "engines": {
     "node": "16.1.0"
   },
   "scripts": {
-    "start": "ts-node ./src/app.ts",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node ./src/app.ts",
+    "build": "tsc",
+    "postinstall": "npm run build",
     "watch": "nodemon",
     "lint": "eslint ."
   },
