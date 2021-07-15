@@ -33,8 +33,8 @@ router.put('/', async (req, res) => {
   const { body } = req;
 
   try {
-    const cards = await updateCategory(body.prevName, body.newName);
-    return res.status(201).json({ data: cards });
+    const category = await updateCategory(body.prevName, body.newName);
+    return res.status(201).json({ data: category });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
