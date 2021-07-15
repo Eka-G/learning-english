@@ -2,12 +2,12 @@ import { Schema } from 'mongoose';
 
 export interface ICategory {
   name: string;
-  cardsId: Schema.Types.ObjectId[];
+  cards: Schema.Types.ObjectId[];
 }
 
 const categorySchema = new Schema<ICategory>({
   name: String,
-  cardsId: [Schema.Types.ObjectId],
+  cards: [{ type: Schema.Types.ObjectId, ref: 'Card' }],
 });
 
 export default categorySchema;
