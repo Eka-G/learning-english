@@ -1,17 +1,19 @@
 import { useState } from 'react';
-import { updateCategory, deleteCategory } from '../../api';
+import { updateCategory, deleteCategory, createCategory } from '../../api';
 import './admin-category.css';
 
 interface AdminCategoryProps {
   title: string;
   quantity: number;
   isNew: boolean;
+  forceRender: () => void;
 }
 
-const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) => {
+const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} }: AdminCategoryProps) => {
   const initionalState = {
     inUpdating: false,
     curTitle: title,
+    itIsNew: isNew,
     newName: '',
     isDeleted: false,
   };
@@ -21,7 +23,7 @@ const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) =
     <>
       {state.isDeleted ? null : (
         <div className="admin-category">
-          {!isNew && !state.inUpdating && (
+          {!state.itIsNew && !state.inUpdating && (
             <>
               <h2 className="admin-category__title">{state.curTitle}</h2>
               <div
@@ -55,7 +57,7 @@ const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) =
             <form className="admin-category__form">
               <label htmlFor="category-name" className="admin-category__title">
                 Category name:
-                {!isNew && (
+                {state.inUpdating && !state.itIsNew && (
                   <input
                     id="category-name"
                     className="admin-category__input"
@@ -64,7 +66,16 @@ const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) =
                     onChange={(event) => setState({ ...state, curTitle: event.currentTarget.value })}
                   />
                 )}
-                {isNew && <input id="category-name" className="admin-category__input" type="text" />}
+                {state.inUpdating && state.itIsNew && (
+                  <input
+                    id="category-name"
+                    className="admin-category__input"
+                    type="text"
+                    onChange={(event) => {
+                      setState({ ...state, curTitle: event.currentTarget.value });
+                    }}
+                  />
+                )}
               </label>
 
               <div className="admin-category__btns">
@@ -72,7 +83,7 @@ const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) =
                   Cancel
                 </button>
 
-                {!isNew && (
+                {state.inUpdating && !state.itIsNew && (
                   <button
                     type="submit"
                     className="admin-category__btn btn btn"
@@ -85,8 +96,18 @@ const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) =
                     OK
                   </button>
                 )}
-                {isNew && (
-                  <button type="submit" className="admin-category__btn btn btn">
+
+                {state.itIsNew && (
+                  <button
+                    type="submit"
+                    className="admin-category__btn btn btn"
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      await createCategory(state.curTitle);
+                      setState({ ...state, inUpdating: false });
+                      forceRender();
+                    }}
+                  >
                     CREATE
                   </button>
                 )}
@@ -94,10 +115,14 @@ const AdminCategory = ({ title, quantity, isNew = false }: AdminCategoryProps) =
             </form>
           )}
 
-          {isNew && (
+          {!state.inUpdating && state.itIsNew && (
             <>
               <h2 className="admin-category__title">{title}</h2>
-              <button type="button" className="admin-category__create-btn">
+              <button
+                type="button"
+                className="admin-category__create-btn"
+                onClick={() => setState({ ...state, inUpdating: true })}
+              >
                 +
               </button>
             </>
