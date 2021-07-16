@@ -21,11 +21,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
-  const { body } = req;
+router.get('/:category', async (req, res) => {
+  const { category } = req.params;
 
   try {
-    const cards = await getCategories(body.name);
+    const cards = await getCategories(category);
     return res.status(201).json({ data: cards });
   } catch (error) {
     return res.status(500).json({ error: error.message });
