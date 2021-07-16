@@ -6,7 +6,6 @@ import config from './config';
 
 const bootstrap = async () => {
   const app = express();
-  const PORT = 3030;
 
   app.use(cors());
   app.use(express.json());
@@ -14,7 +13,7 @@ const bootstrap = async () => {
 
   await mongoose.connect(config.mongodbUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-  app.listen(PORT, () => console.log(`app listening at http://localhost:${PORT}`));
+  app.listen(config.port, () => console.log(`app listening at http://localhost:${config.port}`));
 };
 
 bootstrap();
