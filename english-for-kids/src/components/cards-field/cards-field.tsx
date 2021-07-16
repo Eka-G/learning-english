@@ -3,7 +3,7 @@ import './cards-field.css';
 
 interface CardsFieldProps {
   isAdmin: boolean;
-  children: React.ReactChild | React.ReactChild[];
+  children: React.ReactNode;
 }
 
 const CardsField: React.FC<CardsFieldProps> = ({ children, isAdmin }: CardsFieldProps) => {
