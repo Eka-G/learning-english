@@ -3,9 +3,10 @@ import './admin-card.css';
 
 interface AdminCardProps extends CardInformation {
   isNew: boolean;
+  category: string;
 }
 
-const AdminCard = ({ word, translation, image, audioSrc, isNew }: AdminCardProps) => {
+const AdminCard = ({ word, translation, image, audioSrc, isNew, category }: AdminCardProps) => {
   return (
     <div className="admin-card">
       <div className="admin-card__delete" />
@@ -17,7 +18,7 @@ const AdminCard = ({ word, translation, image, audioSrc, isNew }: AdminCardProps
             <p className="admin-card__item">Sound file: {audioSrc.replace('audio/', '')}</p>
             <div className="admin-card__item">
               <p>Image:</p>
-              <img src={`./cards/${image}`} alt={word} className="admin-card__img" />
+              <img src={image} alt={word} className="admin-card__img" />
             </div>
           </div>
 

@@ -59,7 +59,7 @@ const App = () => {
             <AdminCategoryPage />
           </Route>
 
-          <Route path="/words">
+          <Route path="/admin/categories/:name">
             <AdminWordsPage />
           </Route>
 
