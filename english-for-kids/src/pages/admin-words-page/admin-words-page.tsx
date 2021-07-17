@@ -11,6 +11,7 @@ const AdminWordsPage = () => {
 
   return (
     <div className="page__content">
+      <h1 className="page__title">{name}</h1>
       <CardsField isAdmin>
         {data?.cards.map((item) => {
           return (
