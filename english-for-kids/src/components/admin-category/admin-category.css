@@ -57,6 +57,7 @@
 }
 
 .admin-category__btn {
+  font-size: 14px;
   background-color: var(--bg-color);
 }
 
