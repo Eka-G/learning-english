@@ -10,7 +10,7 @@ interface StoreContainerProps {
 const StoreContainer = ({ children }: StoreContainerProps) => {
   const [state, dispatch] = useReducer(reducer, InitialState);
 
-  return <AppContext.Provider value={{ state, dispatch }}>{children}</AppContext.Provider>;
+  return <AppContext.Provider value={{ state, dispatch, currentCategory: null }}>{children}</AppContext.Provider>;
 };
 
 export default StoreContainer;

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { updateCategory, deleteCategory, createCategory } from '../../api';
+import AddWord from './add-word-btn';
 import './admin-category.css';
 
 interface AdminCategoryProps {
@@ -46,9 +47,7 @@ const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} 
                 >
                   🛠 Update
                 </button>
-                <button type="button" className="admin-category__btn btn btn">
-                  ✎ Add word
-                </button>
+                <AddWord category={state.curTitle} />
               </div>
             </>
           )}

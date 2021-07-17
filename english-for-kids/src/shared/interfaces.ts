@@ -5,3 +5,9 @@ export interface ICard {
   image: string;
   audioSrc: string;
 }
+
+export interface ICategory {
+  _id: string;
+  name: string;
+  cards: ICard[];
+}
