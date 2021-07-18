@@ -15,7 +15,6 @@ const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} 
     inUpdating: false,
     curTitle: title,
     itIsNew: isNew,
-    newName: '',
     isDeleted: false,
   };
   const [state, setState] = useState(initionalState);
@@ -56,23 +55,13 @@ const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} 
             <form className="admin-category__form">
               <label htmlFor="category-name" className="admin-category__title">
                 Category name:
-                {state.inUpdating && !state.itIsNew && (
+                {state.inUpdating && (
                   <input
                     id="category-name"
                     className="admin-category__input"
                     type="text"
                     value={state.curTitle}
                     onChange={(event) => setState({ ...state, curTitle: event.currentTarget.value })}
-                  />
-                )}
-                {state.inUpdating && state.itIsNew && (
-                  <input
-                    id="category-name"
-                    className="admin-category__input"
-                    type="text"
-                    onChange={(event) => {
-                      setState({ ...state, curTitle: event.currentTarget.value });
-                    }}
                   />
                 )}
               </label>

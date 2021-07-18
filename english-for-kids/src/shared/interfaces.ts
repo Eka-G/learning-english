@@ -11,3 +11,13 @@ export interface ICategory {
   name: string;
   cards: ICard[];
 }
+
+export interface IInitionalState {
+  inUpdating: boolean;
+  curWord: string;
+  curTranslation: string;
+  curImage: string;
+  curAudioSrc: string;
+  itIsNew: boolean;
+  isDeleted: boolean;
+}

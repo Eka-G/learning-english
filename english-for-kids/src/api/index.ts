@@ -4,3 +4,4 @@ export { default as updateCategory, UPDATE_CATEGORY_KEY } from './update-categor
 export { default as deleteCategory } from './delete-category';
 export { default as createCategory } from './create-category';
 export { default as getCards, CARDS_KEY } from './get-cards';
+export { default as updateCard } from './update-card';
