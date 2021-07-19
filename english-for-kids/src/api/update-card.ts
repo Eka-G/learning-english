@@ -8,11 +8,11 @@ export interface IUpdateCard {
   audioSrc: string;
 }
 
-const updateCard = async (prevTranslation: string, newCardInfo: IUpdateCard) => {
+const updateCard = async (id: string, newCardInfo: IUpdateCard) => {
   const res = await fetch(`${serverUrl.category}`, {
     method: 'PUT',
     body: JSON.stringify({
-      prevTranslation,
+      id,
       newCardInfo,
     }),
     headers: {

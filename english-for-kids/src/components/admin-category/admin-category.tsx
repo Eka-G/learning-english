@@ -4,13 +4,14 @@ import AddWord from './add-word-btn';
 import './admin-category.css';
 
 interface AdminCategoryProps {
+  id: string;
   title: string;
   quantity: number;
   isNew: boolean;
   forceRender: () => void;
 }
 
-const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} }: AdminCategoryProps) => {
+const AdminCategory = ({ id, title, quantity, isNew = false, forceRender = () => {} }: AdminCategoryProps) => {
   const initionalState = {
     inUpdating: false,
     curTitle: title,
@@ -30,7 +31,7 @@ const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} 
                 role="none"
                 className="admin-category__delete"
                 onClick={() => {
-                  deleteCategory(state.curTitle);
+                  deleteCategory(id);
                   setState({ ...state, isDeleted: true });
                 }}
               >
@@ -77,7 +78,7 @@ const AdminCategory = ({ title, quantity, isNew = false, forceRender = () => {} 
                     className="admin-category__btn btn btn"
                     onClick={async (e) => {
                       e.preventDefault();
-                      await updateCategory(title, state.curTitle);
+                      await updateCategory(id, state.curTitle);
                       setState({ ...state, inUpdating: false });
                     }}
                   >

@@ -8,11 +8,11 @@ interface IResult {
 
 export const CATEGORY_KEY = 'getOneCategory';
 
-const getOneCategory = async (name: string) => {
+const getOneCategory = async (id: string) => {
   const res = await fetch(`${serverUrl.category}`, {
     method: 'GET',
     body: JSON.stringify({
-      name,
+      id,
     }),
     headers: {
       'Content-Type': 'application/json',

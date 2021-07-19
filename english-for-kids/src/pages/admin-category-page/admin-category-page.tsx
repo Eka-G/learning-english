@@ -16,6 +16,7 @@ const AdminCategoryPage = () => {
           return (
             <AdminCategory
               key={item._id}
+              id={item._id}
               title={item.name}
               quantity={item.cards.length}
               isNew={false}
@@ -23,7 +24,7 @@ const AdminCategoryPage = () => {
             />
           );
         }) || null}
-        <AdminCategory title="Create new category" quantity={8} isNew forceRender={() => setState({})} />
+        <AdminCategory id="" title="Create new category" quantity={8} isNew forceRender={() => setState({})} />
       </CardsField>
     </div>
   );

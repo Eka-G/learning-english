@@ -8,11 +8,11 @@ interface IResult {
 
 export const UPDATE_CATEGORY_KEY = 'updateCategory';
 
-const updateCategory = async (prevName: string, newName: string) => {
+const updateCategory = async (id: string, newName: string) => {
   const res = await fetch(`${serverUrl.category}`, {
     method: 'PUT',
     body: JSON.stringify({
-      prevName,
+      id,
       newName,
     }),
     headers: {

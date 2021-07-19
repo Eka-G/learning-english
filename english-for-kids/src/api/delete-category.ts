@@ -1,10 +1,10 @@
 import { serverUrl } from '../shared';
 
-const deleteCategory = async (name: string) => {
+const deleteCategory = async (id: string) => {
   const res = await fetch(`${serverUrl.category}`, {
     method: 'DELETE',
     body: JSON.stringify({
-      name,
+      id,
     }),
     headers: {
       'Content-Type': 'application/json',

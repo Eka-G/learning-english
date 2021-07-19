@@ -17,6 +17,7 @@ const AdminWordsPage = () => {
           return (
             <AdminCard
               key={item._id}
+              _id={item._id}
               word={item.word}
               translation={item.translation}
               image={item.image}
@@ -26,7 +27,7 @@ const AdminWordsPage = () => {
             />
           );
         }) || null}
-        <AdminCard word="" translation="" image="" audioSrc="" isNew category="" />
+        <AdminCard _id="" word="" translation="" image="" audioSrc="" isNew category="" />
       </CardsField>
     </div>
   );
