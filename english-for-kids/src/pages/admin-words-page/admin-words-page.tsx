@@ -23,11 +23,10 @@ const AdminWordsPage = () => {
               image={item.image}
               audioSrc={item.audioSrc}
               isNew={false}
-              category={data.name}
             />
           );
         }) || null}
-        <AdminCard _id="" word="" translation="" image="" audioSrc="" isNew category="" />
+        <AdminCard _id="" word="" translation="" image="" audioSrc="" isNew />
       </CardsField>
     </div>
   );

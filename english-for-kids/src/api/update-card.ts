@@ -1,7 +1,6 @@
 import { serverUrl } from '../shared';
 
 export interface IUpdateCard {
-  categoryName: string;
   word: string;
   translation: string;
   image: string;
@@ -9,7 +8,7 @@ export interface IUpdateCard {
 }
 
 const updateCard = async (id: string, newCardInfo: IUpdateCard) => {
-  const res = await fetch(`${serverUrl.category}`, {
+  const res = await fetch(`${serverUrl.card}`, {
     method: 'PUT',
     body: JSON.stringify({
       id,

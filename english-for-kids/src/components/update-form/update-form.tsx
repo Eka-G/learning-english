@@ -4,7 +4,7 @@ import { updateCard } from '../../api';
 import './update-form.css';
 
 interface IUpdateForm extends IInitionalState {
-  category: string;
+  id: string;
   changeWord: (event: React.FormEvent<HTMLInputElement>) => void;
   changeTranslation: (event: React.FormEvent<HTMLInputElement>) => void;
   changeState: (newState: IInitionalState) => void;
@@ -12,7 +12,7 @@ interface IUpdateForm extends IInitionalState {
 }
 
 const UpdateForm = ({
-  category,
+  id,
   inUpdating,
   curWord,
   curTranslation,
@@ -108,8 +108,7 @@ const UpdateForm = ({
           className="admin-card__btn btn"
           onClick={async (e) => {
             e.preventDefault();
-            await updateCard(curTranslation, {
-              categoryName: category,
+            await updateCard(id, {
               word: curWord,
               translation: curTranslation,
               image: curImage,

@@ -1,16 +1,14 @@
 import { useState } from 'react';
 import { useSound } from 'use-sound';
-import { IInitionalState } from '../../shared';
-import { CardInformation } from '../../constants';
+import { IInitionalState, ICard } from '../../shared';
 import UpdateForm from '../update-form/update-form';
 import './admin-card.css';
 
-interface AdminCardProps extends CardInformation {
+interface AdminCardProps extends ICard {
   isNew: boolean;
-  category: string;
 }
 
-const AdminCard = ({ word, translation, image, audioSrc, isNew, category }: AdminCardProps) => {
+const AdminCard = ({ _id, word, translation, image, audioSrc, isNew }: AdminCardProps) => {
   const [play] = useSound(audioSrc);
   const initionalState: IInitionalState = {
     inUpdating: false,
@@ -72,7 +70,7 @@ const AdminCard = ({ word, translation, image, audioSrc, isNew, category }: Admi
 
           {state.inUpdating && (
             <UpdateForm
-              category={category}
+              id={_id}
               inUpdating={state.itIsNew}
               curWord={state.curWord}
               curTranslation={state.curTranslation}
