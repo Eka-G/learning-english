@@ -6,9 +6,10 @@ import './admin-card.css';
 
 interface AdminCardProps extends ICard {
   isNew: boolean;
+  forceRender: () => void;
 }
 
-const AdminCard = ({ _id, word, translation, image, audioSrc, isNew }: AdminCardProps) => {
+const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, forceRender }: AdminCardProps) => {
   const [play] = useSound(audioSrc);
   const initionalState: IInitionalState = {
     inUpdating: false,
@@ -23,17 +24,21 @@ const AdminCard = ({ _id, word, translation, image, audioSrc, isNew }: AdminCard
 
   const changeWord = (event: React.FormEvent<HTMLInputElement>) => {
     if (!event) return;
+
     setState({ ...state, curWord: event.currentTarget.value });
   };
   const changeTranslation = (event: React.FormEvent<HTMLInputElement>) => {
     if (!event) return;
+
     setState({ ...state, curTranslation: event.currentTarget.value });
   };
   const changeState = (newState: IInitionalState) => {
     setState({ ...newState });
+    forceRender();
   };
   const changeUpdating = () => {
     setState({ ...state, inUpdating: false });
+    forceRender();
   };
 
   return (
