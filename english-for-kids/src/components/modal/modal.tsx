@@ -13,8 +13,20 @@ const Modal = ({ errors }: ModalProps) => {
           <div className="modal__content">
             <p>Errors: {errors}</p>
 
-            {errors > 0 && <img className="modal__img" src="./media/fail.png" alt="fail" />}
-            {errors === 0 && <img className="modal__img" src="./media/success.png" alt="success" />}
+            {errors > 0 && (
+              <img
+                className="modal__img"
+                src="https://res.cloudinary.com/drkkqcud9/image/upload/v1626824356/cards/fail_cqhfz4.png"
+                alt="fail"
+              />
+            )}
+            {errors === 0 && (
+              <img
+                className="modal__img"
+                src="https://res.cloudinary.com/drkkqcud9/image/upload/v1626824356/cards/success_aylj3y.png"
+                alt="success"
+              />
+            )}
           </div>
         </div>
       </div>

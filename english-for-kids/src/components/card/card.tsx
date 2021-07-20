@@ -13,9 +13,9 @@ interface CardProps extends CardInformation {
 const Card = ({ word, translation, image, audioSrc, gameClick, disabled, isCorrect }: CardProps) => {
   const { state } = useStateContext();
   const [activeClass, setActiveClass] = useState(false);
-  const [play] = useSound(`./cards/${audioSrc}`);
+  const [play] = useSound(`${audioSrc}`);
   const imgStyle = {
-    backgroundImage: `url(./cards/${image})`,
+    backgroundImage: `url(${image})`,
   };
   const onCardClick = () => {
     play();

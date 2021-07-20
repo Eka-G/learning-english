@@ -5,7 +5,7 @@ interface StarProps {
 }
 
 const Star = ({ imgPath }: StarProps) => {
-  return <div className="star" style={{ backgroundImage: `url(./media/${imgPath})` }} />;
+  return <div className="star" style={{ backgroundImage: `url(${imgPath})` }} />;
 };
 
 export default Star;

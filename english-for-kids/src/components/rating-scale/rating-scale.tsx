@@ -8,8 +8,12 @@ interface RatingProps {
 }
 
 const RatingScale = ({ correct, error }: RatingProps) => {
-  const stars = Array.from(Array(correct), (_, i) => <Star key={i} imgPath="star.svg" />);
-  const emptyStars = new Array(error).fill(<Star imgPath="empty-star.svg" />);
+  const stars = Array.from(Array(correct), (_, i) => (
+    <Star key={i} imgPath="https://res.cloudinary.com/drkkqcud9/image/upload/v1626824435/cards/star_aatrta.svg" />
+  ));
+  const emptyStars = new Array(error).fill(
+    <Star imgPath="https://res.cloudinary.com/drkkqcud9/image/upload/v1626824435/cards/empty-star_hpzgnu.svg" />,
+  );
 
   return (
     <div className="rating">

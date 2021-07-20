@@ -16,6 +16,7 @@ const NavList = ({ isAdmin, adminItems }: NavListProps) => {
     <>
       {!isAdmin && (
         <ul className="nav-list">
+          <NavItem key="main" value="Main" path="/" />
           {data?.map((item) => {
             return <NavItem key={item._id} id={item._id} value={item.name} path={`/categories/${item.name}`} />;
           })}

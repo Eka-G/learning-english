@@ -40,11 +40,23 @@ const Game = ({ cards }: GameProps) => {
     },
   };
 
-  const [play] = useSound(`./cards/${gameState.sounds[gameState.sounds.length - 1]}`, playOptions);
-  const [playError] = useSound(`./cards/audio/error.mp3`, playOptions);
-  const [playCorrect] = useSound(`./cards/audio/correct.mp3`, playOptions);
-  const [playSuccess] = useSound(`./cards/audio/success.mp3`, playOptions);
-  const [playFail] = useSound(`./cards/audio/failure.mp3`, playOptions);
+  const [play] = useSound(`${gameState.sounds[gameState.sounds.length - 1]}`, playOptions);
+  const [playError] = useSound(
+    'https://res.cloudinary.com/drkkqcud9/video/upload/v1626539341/audio/error_yvnzbj.mp3',
+    playOptions,
+  );
+  const [playCorrect] = useSound(
+    'https://res.cloudinary.com/drkkqcud9/video/upload/v1626539338/audio/correct_vp9lp9.mp3',
+    playOptions,
+  );
+  const [playSuccess] = useSound(
+    'https://res.cloudinary.com/drkkqcud9/video/upload/v1626539351/audio/success_t2hpca.mp3',
+    playOptions,
+  );
+  const [playFail] = useSound(
+    'https://res.cloudinary.com/drkkqcud9/video/upload/v1626539341/audio/failure_ddgtdi.mp3',
+    playOptions,
+  );
 
   useEffect(() => {
     if (!state.isGame || state.gameMode !== 'game') {
