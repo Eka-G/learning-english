@@ -1,13 +1,7 @@
 import { serverUrl } from '../shared';
+import { Card } from '../shared/interfaces';
 
-export interface IUpdateCard {
-  word: string;
-  translation: string;
-  image: string;
-  audioSrc: string;
-}
-
-const updateCard = async (id: string, newCardInfo: IUpdateCard) => {
+const updateCard = async (id: string, newCardInfo: Card) => {
   const res = await fetch(`${serverUrl.card}`, {
     method: 'PUT',
     body: JSON.stringify({
@@ -19,7 +13,7 @@ const updateCard = async (id: string, newCardInfo: IUpdateCard) => {
     },
   });
   const { data } = await res.json();
-  return data as IUpdateCard;
+  return data as Card;
 };
 
 export default updateCard;

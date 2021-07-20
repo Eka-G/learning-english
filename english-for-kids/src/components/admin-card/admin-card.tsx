@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import { useSound } from 'use-sound';
 import { IInitionalState, ICard } from '../../shared';
-import UpdateForm from '../update-form/update-form';
+import UpdateForm from '../update-form';
 import './admin-card.css';
 
 interface AdminCardProps extends ICard {
   isNew: boolean;
+  categoryName: string;
   forceRender: () => void;
 }
 
-const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, forceRender }: AdminCardProps) => {
+const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, categoryName, forceRender }: AdminCardProps) => {
   const [play] = useSound(audioSrc);
   const initionalState: IInitionalState = {
     inUpdating: false,
@@ -18,6 +19,7 @@ const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, forceRender
     curImage: image,
     curAudioSrc: audioSrc,
     itIsNew: isNew,
+    categoryName,
     isDeleted: false,
   };
   const [state, setState] = useState(initionalState);
@@ -31,6 +33,16 @@ const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, forceRender
     if (!event) return;
 
     setState({ ...state, curTranslation: event.currentTarget.value });
+  };
+  const changeImg = (event: React.FormEvent<HTMLInputElement>) => {
+    if (!event) return;
+
+    setState({ ...state, curImage: event.currentTarget.value });
+  };
+  const changeAudio = (event: React.FormEvent<HTMLInputElement>) => {
+    if (!event) return;
+
+    setState({ ...state, curAudioSrc: event.currentTarget.value });
   };
   const changeState = (newState: IInitionalState) => {
     setState({ ...newState });
@@ -82,18 +94,25 @@ const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, forceRender
               curImage={state.curImage}
               curAudioSrc={state.curAudioSrc}
               itIsNew={state.itIsNew}
+              categoryName={categoryName}
               isDeleted={state.isDeleted}
               changeWord={changeWord}
               changeTranslation={changeTranslation}
+              changeImg={changeImg}
+              changeAudio={changeAudio}
               changeState={changeState}
               changeUpdating={changeUpdating}
             />
           )}
 
-          {state.itIsNew && (
+          {!state.inUpdating && state.itIsNew && (
             <div className="admin-card__create">
               <h2 className="admin-card__title">Add new word</h2>
-              <button type="button" className="admin-card__create-btn">
+              <button
+                type="button"
+                className="admin-card__create-btn"
+                onClick={() => setState({ ...state, inUpdating: true })}
+              >
                 +
               </button>
             </div>

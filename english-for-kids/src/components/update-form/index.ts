@@ -1,1 +1,1 @@
-import UpdateForm from './update-form';
+export { default } from './update-form';

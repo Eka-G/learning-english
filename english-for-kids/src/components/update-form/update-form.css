@@ -17,6 +17,10 @@
   outline: none;
 }
 
+.admin-card__comment {
+  font-size: 12px;
+}
+
 @media (max-width: 768px) {
   .admin-card__form,
   .admin-card__input {
@@ -24,9 +28,28 @@
   }
 }
 
+@media (max-width: 576px) {
+  .admin-card__input {
+    padding: 1px;
+    font-size: 10px;
+  }
+
+  .admin-card__update-item {
+    margin-bottom: 5px;
+  }
+
+  .admin-card__comment {
+    font-size: 10px;
+  }
+}
+
 @media (max-width: 320px) {
   .admin-card__form,
   .admin-card__input {
     font-size: 10px;
+  }
+
+  .admin-card__comment {
+    font-size: 8px;
   }
 }

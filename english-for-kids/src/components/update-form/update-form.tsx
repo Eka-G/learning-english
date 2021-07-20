@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { IInitionalState } from '../../shared';
-import { updateCard } from '../../api';
+import { IInitionalState, defaultImgUrl, defaultAudioUrl } from '../../shared';
+import { updateCard, createCard } from '../../api';
 import './update-form.css';
 
 interface IUpdateForm extends IInitionalState {
   id: string;
   changeWord: (event: React.FormEvent<HTMLInputElement>) => void;
   changeTranslation: (event: React.FormEvent<HTMLInputElement>) => void;
+  changeImg: (event: React.FormEvent<HTMLInputElement>) => void;
+  changeAudio: (event: React.FormEvent<HTMLInputElement>) => void;
   changeState: (newState: IInitionalState) => void;
   changeUpdating: () => void;
 }
@@ -19,9 +21,12 @@ const UpdateForm = ({
   curImage,
   curAudioSrc,
   itIsNew,
+  categoryName,
   isDeleted,
   changeWord,
   changeTranslation,
+  changeImg,
+  changeAudio,
   changeState,
   changeUpdating,
 }: IUpdateForm) => {
@@ -32,6 +37,7 @@ const UpdateForm = ({
     curImage,
     curAudioSrc,
     itIsNew,
+    categoryName,
     isDeleted,
   };
   const [state, setState] = useState(initionalState);
@@ -67,35 +73,34 @@ const UpdateForm = ({
           />
         </label>
 
-        <div className="admin-card__assets admin-card__update-item">
-          <span>Image:</span>
-          <button
-            type="submit"
-            className="admin-card__btn btn"
-            onClick={async (e) => {
-              e.preventDefault();
-              // await updatecard(word, curWord);
-              // setState({ ...state, inUpdating: false });
+        <label htmlFor="card-img" className="admin-card__update-item">
+          Image URL:
+          <input
+            id="card-img"
+            className="admin-card__input"
+            type="text"
+            value={curImage}
+            onChange={(event) => {
+              setState({ ...state, curImage: event.currentTarget.value });
+              changeImg(event);
             }}
-          >
-            Select file
-          </button>
-        </div>
+          />
+        </label>
 
-        <div className="admin-card__assets admin-card__update-item">
-          <span>Sound:</span>
-          <button
-            type="submit"
-            className="admin-card__btn btn"
-            onClick={async (e) => {
-              e.preventDefault();
-              // await updatecard(word, curWord);
-              // setState({ ...state, inUpdating: false });
+        <label htmlFor="card-audio" className="admin-card__update-item">
+          Audio URL{' '}
+          <span className="admin-card__comment">(if you leave it empty, it will be filled in automatically)</span>:
+          <input
+            id="card-audio"
+            className="admin-card__input"
+            type="text"
+            value={curAudioSrc}
+            onChange={(event) => {
+              setState({ ...state, curAudioSrc: event.currentTarget.value });
+              changeAudio(event);
             }}
-          >
-            Select file
-          </button>
-        </div>
+          />
+        </label>
       </div>
 
       <div className="admin-card__btns">
@@ -108,12 +113,26 @@ const UpdateForm = ({
           className="admin-card__btn btn"
           onClick={async (e) => {
             e.preventDefault();
-            await updateCard(id, {
-              word: curWord,
-              translation: curTranslation,
-              image: curImage,
-              audioSrc: curAudioSrc,
-            });
+
+            if (itIsNew) {
+              const img = curImage || defaultImgUrl;
+              const audio = curAudioSrc || `${defaultAudioUrl}/${curWord}.mp3`;
+              await createCard({
+                categoryName,
+                word: curWord,
+                translation: curTranslation,
+                image: img,
+                audioSrc: audio,
+              });
+            } else {
+              await updateCard(id, {
+                word: curWord,
+                translation: curTranslation,
+                image: curImage,
+                audioSrc: curAudioSrc,
+              });
+            }
+
             changeUpdating();
           }}
         >

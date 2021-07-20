@@ -1,11 +1,12 @@
-export interface ICard {
-  _id: string;
+export interface Card {
   word: string;
   translation: string;
   image: string;
   audioSrc: string;
 }
-
+export interface ICard extends Card {
+  _id: string;
+}
 export interface ICategory {
   _id: string;
   name: string;
@@ -19,5 +20,6 @@ export interface IInitionalState {
   curImage: string;
   curAudioSrc: string;
   itIsNew: boolean;
+  categoryName: string;
   isDeleted: boolean;
 }

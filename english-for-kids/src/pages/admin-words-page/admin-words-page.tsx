@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import useSWR from 'swr';
 import { useParams } from 'react-router-dom';
+import { defaultImgUrl } from '../../shared';
 import { getCards } from '../../api';
 import CardsField from '../../components/cards-field';
 import AdminCard from '../../components/admin-card';
@@ -25,11 +26,21 @@ const AdminWordsPage = () => {
               image={item.image}
               audioSrc={item.audioSrc}
               isNew={false}
+              categoryName={name}
               forceRender={() => setState({ name })}
             />
           );
         }) || null}
-        <AdminCard _id="" word="" translation="" image="" audioSrc="" isNew forceRender={() => setState({ name })} />
+        <AdminCard
+          _id=""
+          word=""
+          translation=""
+          image={defaultImgUrl}
+          audioSrc=""
+          isNew
+          categoryName={name}
+          forceRender={() => setState({ name })}
+        />
       </CardsField>
     </div>
   );
