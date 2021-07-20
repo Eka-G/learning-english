@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useSound } from 'use-sound';
 import { IInitionalState, ICard } from '../../shared';
+import { deleteCard } from '../../api';
 import UpdateForm from '../update-form';
 import './admin-card.css';
 
@@ -59,7 +60,14 @@ const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, categoryNam
         <div className="admin-card">
           {!isNew && !state.inUpdating && (
             <>
-              <div className="admin-card__delete" />
+              <div
+                role="none"
+                className="admin-card__delete"
+                onClick={() => {
+                  deleteCard(_id);
+                  setState({ ...state, isDeleted: true });
+                }}
+              />
               <div className="admin-card__info">
                 <p className="admin-card__item">Word: {word}</p>
                 <p className="admin-card__item">Translation: {translation}</p>

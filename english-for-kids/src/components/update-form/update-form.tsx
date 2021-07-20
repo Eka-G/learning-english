@@ -136,7 +136,7 @@ const UpdateForm = ({
             changeUpdating();
           }}
         >
-          UPDATE
+          OK
         </button>
       </div>
     </form>

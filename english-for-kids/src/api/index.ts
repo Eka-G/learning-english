@@ -6,3 +6,4 @@ export { default as createCategory } from './create-category';
 export { default as getCards, CARDS_KEY } from './get-cards';
 export { default as updateCard } from './update-card';
 export { default as createCard } from './create-card';
+export { default as deleteCard } from './delete-card';
