@@ -7,6 +7,7 @@ export interface Card {
 export interface ICard extends Card {
   _id: string;
 }
+
 export interface ICategory {
   _id: string;
   name: string;
@@ -22,4 +23,11 @@ export interface IInitionalState {
   itIsNew: boolean;
   categoryName: string;
   isDeleted: boolean;
+}
+
+export interface NavItemProps {
+  id?: string;
+  value: string;
+  path: string;
+  onClick?: (event: MouseEvent) => void;
 }

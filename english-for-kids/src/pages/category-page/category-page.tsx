@@ -1,17 +1,17 @@
-import { CardInformation } from '../../constants';
+import { useParams } from 'react-router-dom';
+import useSWR from 'swr';
 import Game from '../../components/game';
 import './category-page.css';
+import { getCards } from '../../api';
 
-interface CategoryPageInterface {
-  title: string;
-  cards: CardInformation[];
-}
+const CategoryPage = () => {
+  const { name } = useParams<{ name: string }>();
+  const { data } = useSWR([name], getCards);
 
-const CategoryPage = ({ title, cards }: CategoryPageInterface) => {
   return (
     <div className="page__content">
-      <h1 className="page__title">{title}</h1>
-      <Game cards={cards} />
+      <h1 className="page__title">{name}</h1>
+      {data ? <Game cards={data.cards} /> : null}
     </div>
   );
 };

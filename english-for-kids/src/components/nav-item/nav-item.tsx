@@ -1,10 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
+import { NavItemProps } from '../../shared/interfaces';
 import './nav-item.css';
-
-export interface NavItemProps {
-  value: string;
-  path: string;
-}
 
 const NavItem = (props: NavItemProps) => {
   const { value, path } = props;

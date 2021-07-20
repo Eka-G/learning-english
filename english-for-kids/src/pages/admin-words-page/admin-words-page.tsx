@@ -10,7 +10,7 @@ import './admin-words-page.css';
 const AdminWordsPage = () => {
   const { name } = useParams<{ name: string }>();
   const [state, setState] = useState({ name });
-  const { data } = useSWR([state, name], getCards);
+  const { data } = useSWR([name, state], getCards);
 
   return (
     <div className="page__content">

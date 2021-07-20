@@ -63,7 +63,7 @@ const LoginModal = ({ onClose }: LoginModalProps) => {
                   }
 
                   if (form && form.checkValidity()) {
-                    history.push('/categories');
+                    history.push('/admin/categories');
                     dispatch({ type: 'login' });
                   }
                 }}
