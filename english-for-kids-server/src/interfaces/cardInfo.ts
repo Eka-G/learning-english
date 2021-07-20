@@ -1,5 +1,6 @@
 export interface CardInformation {
-  categoryName: string;
+  categoryId?: string;
+  categoryName?: string;
   word: string;
   translation: string;
   image: string;

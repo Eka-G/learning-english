@@ -7,7 +7,6 @@ export default async function createCard({ categoryName, word, translation, imag
   if (!category) return category; // will be null
 
   const newCard = new Card({
-    categoryName,
     word,
     translation,
     image,

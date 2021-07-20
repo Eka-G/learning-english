@@ -39,7 +39,7 @@ router.put('/', async (req, res) => {
   const { body } = req;
 
   try {
-    const card = await updateCard(body.prevTranslation, body.newCArdInfo);
+    const card = await updateCard(body.id, body.newCardInfo);
     return res.status(201).json({ data: card });
   } catch (error) {
     return res.status(404).json({ error: error.message });
@@ -50,7 +50,7 @@ router.delete('/', async (req, res) => {
   const { body } = req;
 
   try {
-    const card = await deleteCard(body.translation);
+    const card = await deleteCard(body.categoryName, body.id);
     return res.status(201).json({ data: card });
   } catch (error) {
     return res.status(404).json({ error: error.message });

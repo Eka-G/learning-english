@@ -45,7 +45,7 @@ router.put('/', async (req, res) => {
   const { body } = req;
 
   try {
-    const category = await updateCategory(body.prevName, body.newName);
+    const category = await updateCategory(body.id, body.newName);
     return res.status(201).json({ data: category });
   } catch (error) {
     return res.status(404).json({ error: error.message });
@@ -56,7 +56,7 @@ router.delete('/', async (req, res) => {
   const { body } = req;
 
   try {
-    const category = await deleteCategory(body.name);
+    const category = await deleteCategory(body.id);
     return res.status(201).json({ data: category });
   } catch (error) {
     return res.status(404).json({ error: error.message });

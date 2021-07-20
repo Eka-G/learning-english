@@ -1,10 +1,16 @@
 import { Card } from '../models';
 import { CardInformation } from '../interfaces/cardInfo';
 
-export default async function updateCard(prevTranslation: string, newCardInfo: CardInformation) {
-  const res = await Card.updateOne({ translation: prevTranslation }, newCardInfo);
+export default async function updateCard(id: string, newCardInfo: CardInformation) {
+  const res = await Card.findOne({ _id: id }).then((card) => {
+    if (!card) return;
 
-  if (res.n === 0) throw new Error('there is no such word in the database');
+    card.word = newCardInfo.word;
+    card.translation = newCardInfo.translation;
+    card.image = newCardInfo.image;
+    card.audioSrc = newCardInfo.audioSrc;
+    card.save();
+  });
 
   return res;
 }
