@@ -64,7 +64,7 @@ const AdminCard = ({ _id, word, translation, image, audioSrc, isNew, categoryNam
                 role="none"
                 className="admin-card__delete"
                 onClick={() => {
-                  deleteCard(_id);
+                  deleteCard(categoryName, _id);
                   setState({ ...state, isDeleted: true });
                 }}
               />
