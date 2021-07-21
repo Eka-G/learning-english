@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import createCard from '../controllers/create-cards';
-import getCards from '../controllers/get-catds';
+import getCard from '../controllers/get-catd';
 import updateCard from '../controllers/update-card';
 import deleteCard from '../controllers/delete-card';
 
@@ -26,9 +26,11 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/all', async (_, res) => {
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const cards = await getCards();
+    const cards = await getCard(id);
     return res.status(201).json({ data: cards });
   } catch (error) {
     return res.status(500).json({ error: error.message });
