@@ -1,10 +1,4 @@
-import { serverUrl, ICard } from '../shared';
-
-interface IResult {
-  cards: ICard[];
-  name: string;
-  _id: string;
-}
+import { serverUrl, ICategory } from '../shared';
 
 export const CATEGORY_KEY = 'getOneCategory';
 
@@ -19,7 +13,7 @@ const getOneCategory = async (id: string) => {
     },
   });
   const { data } = await res.json();
-  return data as IResult;
+  return data as ICategory;
 };
 
 export default getOneCategory;

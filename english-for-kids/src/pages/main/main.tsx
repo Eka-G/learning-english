@@ -1,17 +1,24 @@
-import { CATEGORIES, CARDS } from '../../constants';
+import useSWR from 'swr';
+import { getCategories, CATEGORIES_KEY, getImages } from '../../api';
 import CardsField from '../../components/cards-field/cards-field';
 import Category from '../../components/category/category';
 
 const MainPage = () => {
-  const cardsCategories = Object.entries(CARDS).map((category) => (
-    <Category
-      key={category[0]}
-      title={category[0]}
-      quantity={category[1].length}
-      img={category[1][1].image}
-      path={CATEGORIES[category[0]] || '/'}
-    />
-  ));
+  const categoriesRes = useSWR(CATEGORIES_KEY, getCategories);
+  const cardsRes = useSWR([categoriesRes.data], getImages);
+
+  const cardsCategories = categoriesRes.data?.map((category, i) =>
+    cardsRes.data ? (
+      <Category
+        key={category._id}
+        title={category.name}
+        quantity={category.cards.length}
+        img={cardsRes.data[i]}
+        path={category.name || '/'}
+      />
+    ) : null,
+  );
+
   return (
     <div className="page__content">
       <h1 className="page__title">Welcome to the game!</h1>

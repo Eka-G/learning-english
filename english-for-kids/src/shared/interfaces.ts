@@ -14,6 +14,12 @@ export interface ICategory {
   cards: ICard[];
 }
 
+export interface ICategoryWithoutCards {
+  _id: string;
+  name: string;
+  cards: string[];
+}
+
 export interface IInitionalState {
   inUpdating: boolean;
   curWord: string;

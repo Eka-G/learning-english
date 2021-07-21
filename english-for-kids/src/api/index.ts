@@ -1,10 +1,11 @@
 export { default as getCategories, CATEGORIES_KEY } from './get-categories';
 export { default as getOneCategory, CATEGORY_KEY } from './get-category';
-export { default as getCategoryWithCards, GET_CATEGORY_CARDS } from './get-category-with-cards';
 export { default as updateCategory, UPDATE_CATEGORY_KEY } from './update-category';
 export { default as deleteCategory } from './delete-category';
 export { default as createCategory } from './create-category';
 export { default as getCards, CARDS_KEY } from './get-cards';
+export { default as getCard } from './get-card';
 export { default as updateCard } from './update-card';
 export { default as createCard } from './create-card';
 export { default as deleteCard } from './delete-card';
+export { default as getImages } from './get-images';
